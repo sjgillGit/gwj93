@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cg3b13spsk3yq"]
+
+[ext_resource type="Script" uid="uid://n7mbca5ev311" path="res://Scenes/LevelGeneration/slot.gd" id="1_67x5h"]
+[ext_resource type="Script" uid="uid://p2o2otdx36y4" path="res://Scenes/LevelGeneration/module.gd" id="2_80t34"]
+
+[node name="Slot" type="Node2D" unique_id=716141078]
+script = ExtResource("1_67x5h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2059518730]
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(1, 0.43, 0.43, 1)
+
+[node name="Modules" type="Node2D" parent="." unique_id=1148238125]
+
+[node name="Line2D" type="Line2D" parent="Modules" unique_id=1941207328]
+visible = false
+position = Vector2(29, 37)
+points = PackedVector2Array(-27, 24, 98, 24)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 0,
+1: 0,
+2: 1,
+3: 1
+})
+
+[node name="Line2D2" type="Line2D" parent="Modules" unique_id=967407194]
+visible = false
+position = Vector2(19, 13)
+points = PackedVector2Array(52, 113, 51, -7)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 0,
+3: 0
+})
+
+[node name="Line2D4" type="Line2D" parent="Modules" unique_id=175195500]
+visible = false
+position = Vector2(20, -15)
+points = PackedVector2Array(51, 80, 51, 15)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 1,
+1: 0,
+2: 1,
+3: 0
+})
+
+[node name="Line2D4" type="Line2D" parent="Modules/Line2D4" unique_id=2019758845]
+position = Vector2(-4, -4)
+points = PackedVector2Array(51, 80, 110, 81)
+
+[node name="Line2D5" type="Line2D" parent="Modules" unique_id=926178421]
+visible = false
+position = Vector2(25, -1)
+points = PackedVector2Array(50, 129, 51, 53)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 0,
+1: 1,
+2: 0,
+3: 1
+})
+
+[node name="Line2D4" type="Line2D" parent="Modules/Line2D5" unique_id=717317025]
+position = Vector2(-25, -22)
+points = PackedVector2Array(0, 80, 76, 80)
+
+[node name="Line2D6" type="Line2D" parent="Modules" unique_id=2068138977]
+visible = false
+position = Vector2(25, -1)
+points = PackedVector2Array(50, 129, 51, 53)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 0,
+1: 1,
+2: 1,
+3: 0
+})
+
+[node name="Line2D4" type="Line2D" parent="Modules/Line2D6" unique_id=1356654868]
+position = Vector2(29, -22)
+points = PackedVector2Array(16, 80, 76, 80)
+
+[node name="Line2D7" type="Line2D" parent="Modules" unique_id=1568421175]
+visible = false
+position = Vector2(12, -63)
+points = PackedVector2Array(50, 129, 49, 64)
+script = ExtResource("2_80t34")
+paths = Dictionary[int, int]({
+0: 1,
+1: 0,
+2: 1,
+3: 0
+})
+
+[node name="Line2D4" type="Line2D" parent="Modules/Line2D7" unique_id=1780976106]
+position = Vector2(33, 42)
+points = PackedVector2Array(16, 80, 82, 80)
+
+[node name="Line2D3" type="Line2D" parent="Modules" unique_id=1210723581]
+visible = false
+position = Vector2(24, 3)
+points = PackedVector2Array(51, 125, 52, -1)
+script = ExtResource("2_80t34")
+
+[node name="Line2D" type="Line2D" parent="Modules/Line2D3" unique_id=1653890602]
+position = Vector2(21, 31)
+points = PackedVector2Array(-45, 27, 83, 27)
+
+[node name="Button" type="Button" parent="." unique_id=1151651757]
+offset_left = 52.0
+offset_top = 93.0
+offset_right = 123.0
+offset_bottom = 124.0
+text = "collapse"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
