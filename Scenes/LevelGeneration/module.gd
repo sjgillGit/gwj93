@@ -7,12 +7,18 @@ enum Path {
 	LEFT
 }
 
+## 0 indicates sidewalk, 1 indicates intersection, 2 indicates straightaway
 @export var paths: Dictionary[Path, int] = {
-	Path.UP: 1, 
+	Path.UP: 1,
 	Path.DOWN: 1, 
 	Path.LEFT: 1, 
 	Path.RIGHT: 1
 }
+
+@export var is_intersection: bool = true
+@export var is_straightaway: bool = false
+
+@export var weight: float = 1
 
 
 static func path_to_dir(path: Path) -> Vector2i:
@@ -41,4 +47,5 @@ static func corresponding_path(path: Path) -> Path:
 		Path.RIGHT:
 			return Path.LEFT
 	
+	@warning_ignore("unassigned_variable")
 	return res

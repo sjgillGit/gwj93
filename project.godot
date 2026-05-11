@@ -15,6 +15,14 @@ run/main_scene="uid://bbke32njlpmeq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RNG="*uid://bue7ypul5ogk3"
+
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 InputUp={
