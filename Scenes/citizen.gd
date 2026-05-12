@@ -65,7 +65,7 @@ func update_state(delta: float) -> void:
 		State.CHASING:
 			var player_visible := far_vision_detector.get_overlapping_bodies().has(%Player)
 			var path_finished := nav_agent.is_navigation_finished()
-			if path_finished:
+			if !player_visible and path_finished:
 				enter_state(State.IDLE)
 			if player_visible:
 				nav_agent.target_position = %Player.global_position
