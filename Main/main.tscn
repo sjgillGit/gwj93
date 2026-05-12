@@ -18,5 +18,4 @@ position = Vector2(528, 344)
 position = Vector2(575, 294)
 
 [node name="LevelGenerator" parent="." unique_id=609460223 instance=ExtResource("5_k3v36")]
-visible = false
 z_index = -1

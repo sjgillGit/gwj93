@@ -203,8 +203,8 @@ func update(pos: Vector2i) -> void:
 			# This path doesn't need to be checked if out of bounds
 			if !is_valid_slot(pos + Module.path_to_dir(path)):
 				# Only sidewalks should end the map
-				if module.paths[path] != 0:
-					module_valid = false
+				#if module.paths[path] != 0:
+					#module_valid = false
 				continue
 			
 			var path_valid: bool = false
@@ -220,6 +220,13 @@ func update(pos: Vector2i) -> void:
 					continue
 				#if module.is_straightaway and nei_module.is_straightaway:
 					#continue
+					
+				# parallel road check, if both are roads, but are connecting through sidewalk
+				# then we cancel
+				var is_sidewalk_connection: bool = module.paths[path] == 0 and nei_module.paths[path_to_check] == 0
+				var both_roads: bool = nei_module.paths.values().has(1) and module.paths.values().has(1)
+				if is_sidewalk_connection and both_roads:
+					continue
 				
 				# if corresponding, then this path is valid
 				if module.paths[path] == nei_module.paths[path_to_check]:

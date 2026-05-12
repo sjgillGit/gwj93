@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://n7mbca5ev311" path="res://Scenes/LevelGeneration/slot.gd" id="1_67x5h"]
 [ext_resource type="TileSet" uid="uid://b1vgdw0essfir" path="res://Scenes/LevelGeneration/tile_set.tres" id="2_67x5h"]
 [ext_resource type="Script" uid="uid://p2o2otdx36y4" path="res://Scenes/LevelGeneration/module.gd" id="2_80t34"]
-[ext_resource type="Texture2D" uid="uid://yhpw7badl1yp" path="res://Assets/Placeholder/Environment/House_Free_TexturePack.png" id="4_4qxx8"]
+[ext_resource type="PackedScene" path="res://Scenes/building.tscn" id="4_4qxx8"]
 
 [node name="Slot" type="Node2D" unique_id=716141078 node_paths=PackedStringArray("modules")]
 script = ExtResource("1_67x5h")
@@ -161,11 +161,9 @@ tile_set = ExtResource("2_67x5h")
 [node name="Lines" type="TileMapLayer" parent="Modules/Block/Main" unique_id=1872141446]
 tile_set = ExtResource("2_67x5h")
 
-[node name="HouseFreeTexturePack" type="Sprite2D" parent="Modules/Block" unique_id=632630830]
-position = Vector2(64, 47)
-texture = ExtResource("4_4qxx8")
-region_enabled = true
-region_rect = Rect2(0, 100, 75, 97)
+[node name="Building" parent="Modules/Block" unique_id=95963998 instance=ExtResource("4_4qxx8")]
+position = Vector2(64, 99)
+scale = Vector2(1, 1.529)
 
 [node name="Left" type="Node2D" parent="Modules" unique_id=241570654]
 visible = false
@@ -256,7 +254,6 @@ paths = Dictionary[int, int]({
 2: 1,
 3: 0
 })
-is_intersection = false
 weight = 0.1
 
 [node name="Main" type="TileMapLayer" parent="Modules/UpRight" unique_id=1710754851]
@@ -276,7 +273,6 @@ paths = Dictionary[int, int]({
 2: 0,
 3: 1
 })
-is_intersection = false
 weight = 0.1
 
 [node name="Main" type="TileMapLayer" parent="Modules/UpLeft" unique_id=96666048]
@@ -296,7 +292,6 @@ paths = Dictionary[int, int]({
 2: 1,
 3: 0
 })
-is_intersection = false
 weight = 0.1
 
 [node name="Main" type="TileMapLayer" parent="Modules/DownRight" unique_id=2124824460]
@@ -316,7 +311,6 @@ paths = Dictionary[int, int]({
 2: 0,
 3: 1
 })
-is_intersection = false
 weight = 0.1
 
 [node name="Main" type="TileMapLayer" parent="Modules/DownLeft" unique_id=15330628]
@@ -335,6 +329,7 @@ offset_right = 123.0
 offset_bottom = 124.0
 
 [node name="Inactive" type="Node2D" parent="." unique_id=1444338224]
+process_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=143070501]
 offset_right = 40.0

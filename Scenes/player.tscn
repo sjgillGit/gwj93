@@ -14,22 +14,25 @@ collision_mask = 4
 script = ExtResource("1_cvnsp")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1544013206]
-position = Vector2(0.75, 11)
 shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=751425990]
+position = Vector2(0, -12)
 texture = ExtResource("2_cvnsp")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=785082911]
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
 
 [node name="InteractionDetector" type="Area2D" parent="." unique_id=1588281262]
+position = Vector2(0, -12)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=190712221]
+position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_cvnsp")
