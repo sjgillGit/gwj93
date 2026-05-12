@@ -1,4 +1,4 @@
-extends Node2D
+@tool extends Node2D
 
 const slot_scene: PackedScene = preload("res://Scenes/LevelGeneration/slot.tscn")
 
@@ -8,23 +8,36 @@ const block_pixel_size: int = tile_size * tiles_in_block
 const block_grid_width: int = 20
 const block_grid_height: int = 15
 
+@export_tool_button("Generate") var generate_action = regenerate
+@export_tool_button("Clear") var clear_action = clear
+
 # 2d array with rows first
 var slots: Array[Slot]
+
+@onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	regenerate()
 	
-func setup() -> void:
+func clear() -> void:
 	for slot in slots:
 		slot.queue_free()
+		remove_child(slot)
+	
 	slots.clear()
+	
+	
+func setup() -> void:
+	clear()
 	
 	for y in block_grid_height:
 		for x in block_grid_width:
 			var slot: Slot = slot_scene.instantiate()
 			add_child(slot)
+			if Engine.is_editor_hint():
+				slot.owner = self
 			slot.global_position = Vector2(x * block_pixel_size, y * block_pixel_size)
-			slot.collapse_me.connect(collapse.bind(Vector2i(x,y)))
+			#slot.collapse_me.connect(collapse.bind(Vector2i(x,y)))
 			slots.append(slot)
 	
 	
@@ -38,6 +51,7 @@ func _input(event: InputEvent) -> void:
 
 func regenerate() -> void:
 	setup()
+	#await get_tree().create_timer(0.1).timeout
 	generate()
 
 
@@ -53,6 +67,7 @@ func generate() -> void:
 		var min_slot_options: int
 		for slot in to_process:
 			# find one with minimum slots
+			
 			if min_slot == null or slot.modules.get_child_count() < min_slot_options:
 				min_slot_options = slot.modules.get_child_count()
 				min_slot = slot
@@ -63,12 +78,12 @@ func generate() -> void:
 			return
 	
 		# collapse it
+
 		collapse(index_to_coord(slots.find(min_slot)))
 		#await get_tree().create_timer(0.1).timeout
 		
 		# remove from array
 		to_process.remove_at(to_process.find(min_slot))
-	#print("done!")
 
 
 func get_border_coords() -> Array[Vector2i]:
@@ -115,9 +130,10 @@ func place_border() -> void:
 	end_block_idx %= border_block_count
 	start_block_idx %= border_block_count
 	
-	# now collapse the slots
+	# now force the block module for the two slots
+	# NOTE: optimize by only accessing the start and end index not looping
 	for idx in border_coords.size():
-		get_slot(border_coords[idx]).label.text = str(idx)
+		#get_slot(border_coords[idx]).get_label().text = str(idx)
 		if idx == start_block_idx or idx == end_block_idx:
 			force_block(border_coords[idx], "Block")
 			get_slot(border_coords[idx]).modulate = Color.RED
@@ -144,13 +160,6 @@ func force_block(pos: Vector2i, block: String) -> void:
 	for module in modules:
 		if module != selected_module:
 			module.reparent(slot.inactive)
-			
-	# propagate changes
-	update(pos + Vector2i.UP)
-	update(pos + Vector2i.DOWN)
-	update(pos + Vector2i.LEFT)
-	update(pos + Vector2i.RIGHT)
-
 
 func collapse(pos: Vector2i) -> void:
 	# randomly picks a pos for the slot at pos and then
@@ -159,12 +168,14 @@ func collapse(pos: Vector2i) -> void:
 	var module_weights: Array[float]
 	for mod in modules:
 		module_weights.append(mod.weight)
-	var selected_module: Module = modules[RNG.rng.rand_weighted(module_weights)]
+	var selected_module: Module = modules[rng.rand_weighted(module_weights)]
 	
 	# now remove the other modules
 	for module in modules:
 		if module != selected_module:
 			module.reparent(slot.inactive)
+	
+	selected_module.show()
 			
 	# propagate changes
 	update(pos + Vector2i.UP)
@@ -207,8 +218,8 @@ func update(pos: Vector2i) -> void:
 				# if both are intersection then we stop
 				if module.is_intersection and nei_module.is_intersection:
 					continue
-				if module.is_straightaway and nei_module.is_straightaway:
-					continue
+				#if module.is_straightaway and nei_module.is_straightaway:
+					#continue
 				
 				# if corresponding, then this path is valid
 				if module.paths[path] == nei_module.paths[path_to_check]:

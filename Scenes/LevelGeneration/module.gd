@@ -17,6 +17,8 @@ enum Path {
 
 @export var is_intersection: bool = true
 @export var is_straightaway: bool = false
+@export var vertical: bool = false
+@export var horizontal: bool = false
 
 @export var weight: float = 1
 

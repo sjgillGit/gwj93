@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://lm8wd217qmun"]
 
 [ext_resource type="Script" uid="uid://s1stwxeuu1be" path="res://Scenes/LevelGeneration/level_generator.gd" id="1_xgtxp"]
-[ext_resource type="PackedScene" uid="uid://cjpadiddp1g0h" path="res://Scenes/player.tscn" id="3_cjhjj"]
 
 [node name="LevelGenerator" type="Node2D" unique_id=609460223]
 script = ExtResource("1_xgtxp")
-
-[node name="Player" parent="." unique_id=1825991017 instance=ExtResource("3_cjhjj")]
-z_index = 1
-position = Vector2(576, 323)

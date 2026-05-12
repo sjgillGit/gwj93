@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://beapo2vboq3tr"]
+
+[ext_resource type="Script" uid="uid://u8oj4yvg1pr7" path="res://Scenes/interactable.gd" id="1_pmsje"]
+[ext_resource type="Texture2D" uid="uid://1bkrhmqef34" path="res://Assets/Placeholder/Character/headgear_16x32.png" id="2_73reo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6fdm"]
+radius = 11.000028
+
+[sub_resource type="LabelSettings" id="LabelSettings_rj11h"]
+font_size = 8
+
+[node name="Interactable" type="Area2D" unique_id=1062114288]
+rotation = 0.008467187
+collision_layer = 2
+script = ExtResource("1_pmsje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1919403923]
+shape = SubResource("CircleShape2D_f6fdm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=335036205]
+position = Vector2(0.050802536, 5.9997854)
+rotation = -0.49850228
+texture = ExtResource("2_73reo")
+region_enabled = true
+region_rect = Rect2(0, 0, 17, 10)
+
+[node name="Label" type="Label" parent="." unique_id=1306535868]
+visible = false
+offset_left = -12.177379
+offset_top = -20.897642
+offset_right = 27.82262
+offset_bottom = 2.1023579
+text = "E"
+label_settings = SubResource("LabelSettings_rj11h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

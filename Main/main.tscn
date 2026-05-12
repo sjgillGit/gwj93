@@ -1,15 +1,22 @@
 [gd_scene format=3 uid="uid://bbke32njlpmeq"]
 
 [ext_resource type="PackedScene" uid="uid://cjpadiddp1g0h" path="res://Scenes/player.tscn" id="1_yh5la"]
-[ext_resource type="Texture2D" uid="uid://bn0xk03olbu76" path="res://icon.svg" id="2_2w1kt"]
+[ext_resource type="PackedScene" uid="uid://beapo2vboq3tr" path="res://Scenes/interactable.tscn" id="2_eunhr"]
+[ext_resource type="PackedScene" uid="uid://bsgcolbvamoct" path="res://Scenes/building.tscn" id="4_k3v36"]
+[ext_resource type="PackedScene" uid="uid://lm8wd217qmun" path="res://Scenes/LevelGeneration/level_generator.tscn" id="5_k3v36"]
 
 [node name="Main" type="Node2D" unique_id=197704852]
+y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=1825991017 instance=ExtResource("1_yh5la")]
 position = Vector2(477, 349)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2120026475]
+[node name="Interactable" parent="." unique_id=1062114288 instance=ExtResource("2_eunhr")]
+position = Vector2(528, 344)
+
+[node name="Building" parent="." unique_id=632393335 instance=ExtResource("4_k3v36")]
+position = Vector2(575, 294)
+
+[node name="LevelGenerator" parent="." unique_id=609460223 instance=ExtResource("5_k3v36")]
+visible = false
 z_index = -1
-position = Vector2(671.5, 497)
-scale = Vector2(50, 38.14)
-texture = ExtResource("2_2w1kt")

@@ -3,13 +3,19 @@
 [ext_resource type="Script" uid="uid://cif6ha7e60t7m" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://daixvnq5567sb" path="res://Assets/Placeholder/Character/16x32 Walk Cycle-Sheet_ClothingTest.png" id="2_cvnsp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(8.5, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
+radius = 18.027756
 
 [node name="Player" type="CharacterBody2D" unique_id=1825991017]
+collision_mask = 4
 script = ExtResource("1_cvnsp")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1544013206]
-shape = SubResource("CircleShape2D_vgqql")
+position = Vector2(0.75, 11)
+shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=751425990]
 texture = ExtResource("2_cvnsp")
@@ -20,3 +26,10 @@ region_rect = Rect2(0, 0, 16, 32)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
+
+[node name="InteractionDetector" type="Area2D" parent="." unique_id=1588281262]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=190712221]
+shape = SubResource("CircleShape2D_cvnsp")
