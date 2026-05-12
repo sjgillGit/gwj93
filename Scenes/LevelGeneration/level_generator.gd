@@ -1,30 +1,43 @@
-extends Node2D
+@tool extends Node2D
 
 const slot_scene: PackedScene = preload("res://Scenes/LevelGeneration/slot.tscn")
 
 const tiles_in_block: int = 8
 const tile_size: int = 16
 const block_pixel_size: int = tile_size * tiles_in_block
-const block_grid_width: int = 8
-const block_grid_height: int = 5
+const block_grid_width: int = 20
+const block_grid_height: int = 15
+
+@export_tool_button("Generate") var generate_action = regenerate
+@export_tool_button("Clear") var clear_action = clear
 
 # 2d array with rows first
 var slots: Array[Slot]
 
+@onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+
 func _ready() -> void:
-	setup()
+	regenerate()
 	
-func setup() -> void:
+func clear() -> void:
 	for slot in slots:
 		slot.queue_free()
+		remove_child(slot)
+	
 	slots.clear()
+	
+	
+func setup() -> void:
+	clear()
 	
 	for y in block_grid_height:
 		for x in block_grid_width:
 			var slot: Slot = slot_scene.instantiate()
 			add_child(slot)
+			if Engine.is_editor_hint():
+				slot.owner = self
 			slot.global_position = Vector2(x * block_pixel_size, y * block_pixel_size)
-			slot.collapse_me.connect(collapse.bind(Vector2i(x,y)))
+			#slot.collapse_me.connect(collapse.bind(Vector2i(x,y)))
 			slots.append(slot)
 	
 	
@@ -34,11 +47,17 @@ func get_slot(pos: Vector2i) -> Slot:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		setup()
-		generate()
-		
+		regenerate()
+
+func regenerate() -> void:
+	setup()
+	#await get_tree().create_timer(0.1).timeout
+	generate()
+
 
 func generate() -> void:
+	place_border()
+	
 	var to_process := slots.duplicate()
 	to_process.shuffle()
 	
@@ -48,20 +67,82 @@ func generate() -> void:
 		var min_slot_options: int
 		for slot in to_process:
 			# find one with minimum slots
+			
 			if min_slot == null or slot.modules.get_child_count() < min_slot_options:
 				min_slot_options = slot.modules.get_child_count()
 				min_slot = slot
+		
+		# check for failure and restart if so
+		if min_slot_options < 1:
+			regenerate()
+			return
 	
 		# collapse it
-		await collapse(index_to_coord(slots.find(min_slot)))
-		await get_tree().create_timer(0.1).timeout
+
+		collapse(index_to_coord(slots.find(min_slot)))
+		#await get_tree().create_timer(0.1).timeout
 		
 		# remove from array
 		to_process.remove_at(to_process.find(min_slot))
-	print("done!")
+
+
+func get_border_coords() -> Array[Vector2i]:
+	# create array of rotating coordinates
+	var border_coords: Array[Vector2i]
 	
+	# top left to top right
+	for x in range(1, block_grid_width):
+		border_coords.append(Vector2i(x, 0))
+	
+	# top right to bot right
+	for y in range(1, block_grid_height):
+		border_coords.append(Vector2i(block_grid_width - 1, y))
+	
+	# bot right to bot left
+	for x in range(block_grid_width - 2, -1, -1):
+		border_coords.append(Vector2i(x, block_grid_height - 1))
+	
+	# bot left to top left
+	for y in range(block_grid_height - 2, -1, -1):
+		border_coords.append(Vector2i(0, y))
 		
+	return border_coords
+
+	
+func place_border() -> void:
+	# calculate indices for edge 
+	var border_coords := get_border_coords()
+	var border_block_count := border_coords.size()
+	
+	# start in middle of list
+	@warning_ignore("integer_division")
+	var start_block_idx: int = border_block_count / 2
+	
+	# radiate away from the start
+	@warning_ignore("integer_division")
+	var end_block_idx: int = start_block_idx + randi_range(border_block_count / 3, border_block_count / 2)
+	
+	# add a random offset
+	@warning_ignore("integer_division")
+	var offset: int = randi_range(0, border_block_count / 2)
+	start_block_idx += offset
+	end_block_idx += offset
+	end_block_idx %= border_block_count
+	start_block_idx %= border_block_count
+	
+	# now force the block module for the two slots
+	# NOTE: optimize by only accessing the start and end index not looping
+	for idx in border_coords.size():
+		#get_slot(border_coords[idx]).get_label().text = str(idx)
+		if idx == start_block_idx or idx == end_block_idx:
+			force_block(border_coords[idx], "Block")
+			get_slot(border_coords[idx]).modulate = Color.RED
+		#force_block(coord, "Block")
+
+
+
 func index_to_coord(idx: int) -> Vector2i:
+	@warning_ignore("integer_division")
 	return Vector2i(idx % block_grid_width, idx / block_grid_width)
 		
 
@@ -69,25 +150,37 @@ func is_valid_slot(pos: Vector2i) -> bool:
 	return pos.x > -1 && pos.y > -1 && pos.x < block_grid_width && pos.y < block_grid_height
 
 
-func collapse(pos: Vector2i) -> void:
+func force_block(pos: Vector2i, block: String) -> void:
 	# randomly picks a pos for the slot at pos and then
 	var slot: Slot = get_slot(pos)
 	var modules: Array[Node] = slot.modules.get_children()
-	var selected_module: Module = modules.pick_random()
+	var selected_module: Module = slot.modules.find_child(block)
 	
 	# now remove the other modules
 	for module in modules:
 		if module != selected_module:
-			module.queue_free()
+			module.reparent(slot.inactive)
+
+func collapse(pos: Vector2i) -> void:
+	# randomly picks a pos for the slot at pos and then
+	var slot: Slot = get_slot(pos)
+	var modules: Array[Node] = slot.modules.get_children()
+	var module_weights: Array[float]
+	for mod in modules:
+		module_weights.append(mod.weight)
+	var selected_module: Module = modules[rng.rand_weighted(module_weights)]
+	
+	# now remove the other modules
+	for module in modules:
+		if module != selected_module:
+			module.reparent(slot.inactive)
+	
+	selected_module.show()
 			
 	# propagate changes
-	await get_tree().create_timer(0.1).timeout
 	update(pos + Vector2i.UP)
-	#await get_tree().create_timer(0.5).timeout
 	update(pos + Vector2i.DOWN)
-	#await get_tree().create_timer(0.5).timeout
 	update(pos + Vector2i.LEFT)
-	#await get_tree().create_timer(0.5).timeout
 	update(pos + Vector2i.RIGHT)
 	
 
@@ -109,6 +202,9 @@ func update(pos: Vector2i) -> void:
 		for path in module.paths:
 			# This path doesn't need to be checked if out of bounds
 			if !is_valid_slot(pos + Module.path_to_dir(path)):
+				# Only sidewalks should end the map
+				#if module.paths[path] != 0:
+					#module_valid = false
 				continue
 			
 			var path_valid: bool = false
@@ -119,6 +215,19 @@ func update(pos: Vector2i) -> void:
 			
 			# check for a module that has matching socket number in the correct socket
 			for nei_module in nei.modules.get_children():
+				# if both are intersection then we stop
+				if module.is_intersection and nei_module.is_intersection:
+					continue
+				#if module.is_straightaway and nei_module.is_straightaway:
+					#continue
+					
+				# parallel road check, if both are roads, but are connecting through sidewalk
+				# then we cancel
+				var is_sidewalk_connection: bool = module.paths[path] == 0 and nei_module.paths[path_to_check] == 0
+				var both_roads: bool = nei_module.paths.values().has(1) and module.paths.values().has(1)
+				if is_sidewalk_connection and both_roads:
+					continue
+				
 				# if corresponding, then this path is valid
 				if module.paths[path] == nei_module.paths[path_to_check]:
 					path_valid = true
@@ -130,14 +239,14 @@ func update(pos: Vector2i) -> void:
 				break
 		
 		if !module_valid:
-			module.queue_free()
+			module.reparent(slot.inactive)
 			changed = true
 		
 	# if changed then update neighbors
 	if changed:
 		#print("changed: " + str(pos))
 		# propagate changes
-		await get_tree().create_timer(0.1).timeout
+		#await get_tree().create_timer(0.1).timeout
 		update(pos + Vector2i.UP)
 		#await get_tree().create_timer(0.5).timeout
 		update(pos + Vector2i.DOWN)
