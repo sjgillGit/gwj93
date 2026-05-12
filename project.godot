@@ -42,6 +42,13 @@ InputRight={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_5="floor"
+2d_render/layer_6="backwall_backdoor"
+2d_render/layer_7="frontwall_frontdoor"
+2d_render/layer_8="roof"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
