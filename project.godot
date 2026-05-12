@@ -18,6 +18,9 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="viewport"
+[autoload]
+
+ClothingManager="*uid://3jlssw4j3tsh"
 
 [input]
 
@@ -52,6 +55,13 @@ Interact={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Interactable"
 2d_physics/layer_3="Building"
+
+[layer_names]
+
+2d_render/layer_5="floor"
+2d_render/layer_6="backwall_backdoor"
+2d_render/layer_7="frontwall_frontdoor"
+2d_render/layer_8="roof"
 
 [physics]
 
