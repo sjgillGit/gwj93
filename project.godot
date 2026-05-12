@@ -21,7 +21,11 @@ ClothingManager="*uid://3jlssw4j3tsh"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+nav_blocker=""
 
 [input]
 

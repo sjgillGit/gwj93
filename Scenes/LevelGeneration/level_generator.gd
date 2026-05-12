@@ -1,7 +1,10 @@
 @tool extends Node2D
 
 const slot_scene: PackedScene = preload("res://Scenes/LevelGeneration/slot.tscn")
+const citizen_scene = preload("res://Scenes/citizen.tscn")
 
+const min_citizen: int = 20
+const max_citizen: int = 50
 const tiles_in_block: int = 8
 const tile_size: int = 16
 const block_pixel_size: int = tile_size * tiles_in_block
@@ -10,6 +13,7 @@ const block_grid_height: int = 15
 
 @export_tool_button("Generate") var generate_action = regenerate
 @export_tool_button("Clear") var clear_action = clear
+@export var nav_region: NavigationRegion2D
 
 # 2d array with rows first
 var slots: Array[Slot]
@@ -56,6 +60,7 @@ func regenerate() -> void:
 
 
 func generate() -> void:
+	# place blocks
 	place_border()
 	
 	var to_process := slots.duplicate()
@@ -85,6 +90,28 @@ func generate() -> void:
 		# remove from array
 		to_process.remove_at(to_process.find(min_slot))
 
+	# clean up and prep
+	if Engine.is_editor_hint():
+		return
+	
+	update_navigation()
+	
+	place_citizens()
+	
+func place_citizens() -> void:
+	var citizen_count := randi_range(min_citizen, max_citizen)
+	for c in citizen_count:
+		var citizen := citizen_scene.instantiate()
+		add_sibling.call_deferred(citizen)
+		citizen.global_position = Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+#	pass
+	
+func update_navigation() -> void:
+	# wait a few seconds for unused modules to get deleted
+	# TODO: this is a hacky way to wait for deletion
+	await get_tree().create_timer(0.1).timeout
+	nav_region.bake_navigation_polygon()
+	
 
 func get_border_coords() -> Array[Vector2i]:
 	# create array of rotating coordinates
@@ -160,6 +187,7 @@ func force_block(pos: Vector2i, block: String) -> void:
 	for module in modules:
 		if module != selected_module:
 			module.reparent(slot.inactive)
+			module.queue_free()
 
 func collapse(pos: Vector2i) -> void:
 	# randomly picks a pos for the slot at pos and then
@@ -174,6 +202,7 @@ func collapse(pos: Vector2i) -> void:
 	for module in modules:
 		if module != selected_module:
 			module.reparent(slot.inactive)
+			module.queue_free()
 	
 	selected_module.show()
 			

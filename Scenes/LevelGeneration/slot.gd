@@ -17,3 +17,8 @@ class_name Slot extends Node2D
 	#$Button.text = str(modules.get_child_count())
 	#if modules.get_child_count() == 1:
 		#$Button.hide()
+
+
+func _on_inactive_child_order_changed() -> void:
+	for child in inactive.get_children():
+		child.queue_free()

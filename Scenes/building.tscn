@@ -22,7 +22,7 @@ size = Vector2(18.25, 1.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxhs"]
 size = Vector2(58, 1)
 
-[node name="Building" type="StaticBody2D" unique_id=95963998]
+[node name="Building" type="StaticBody2D" unique_id=95963998 groups=["nav_blocker"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_uj2qm")

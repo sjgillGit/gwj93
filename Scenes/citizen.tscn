@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbr3rnh3uurh3"]
 
 [ext_resource type="Script" uid="uid://cr5q6pe8tqyfy" path="res://Scenes/citizen.gd" id="1_wxrsi"]
-[ext_resource type="Texture2D" uid="uid://mu1r6i5t3a58" path="res://Assets/Placeholder/Character/ref_examples/character_examples_16x32.png" id="2_2cv82"]
+[ext_resource type="Texture2D" uid="uid://dtp4rc7ha7l87" path="res://Assets/Placeholder/Character/ref_examples/character_examples_16x32.png" id="2_2cv82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6fdm"]
 size = Vector2(8, 6)

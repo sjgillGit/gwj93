@@ -11,6 +11,7 @@ enum State {
 
 var state: State = State.IDLE
 var time_in_state: float = 0.0
+var player: Player
 #var target: Vector2
 
 @onready var sprite: Sprite2D = $Sprite2D
@@ -19,6 +20,10 @@ var time_in_state: float = 0.0
 @onready var vision_detector: Area2D = $VisionDetector
 @onready var far_vision_detector: Area2D = $FarVisionDetector
 @onready var label: Label = $Label
+
+func _ready() -> void:
+	randomize_sprite()
+	player = get_parent().get_node("Player")
 
 
 func _physics_process(delta: float) -> void:
@@ -47,28 +52,28 @@ func update_state(delta: float) -> void:
 		State.IDLE:
 			if time_in_state > 1.0:
 				enter_state(State.WANDERING)
-			if vision_detector.get_overlapping_bodies().has(%Player):
+			if vision_detector.get_overlapping_bodies().has(player):
 				enter_state(State.SUSPICIOUS)
 			# detect noise
 		State.WANDERING:
 			if nav_agent.is_navigation_finished():
 				enter_state(State.IDLE)
-			if vision_detector.get_overlapping_bodies().has(%Player):
+			if vision_detector.get_overlapping_bodies().has(player):
 				enter_state(State.SUSPICIOUS)
 			# detect noise
 		State.SUSPICIOUS:
 			# can't see player
-			if !vision_detector.get_overlapping_bodies().has(%Player):
+			if !vision_detector.get_overlapping_bodies().has(player):
 				enter_state(State.IDLE)
 			elif time_in_state > 2.0:
 				enter_state(State.CHASING)
 		State.CHASING:
-			var player_visible := far_vision_detector.get_overlapping_bodies().has(%Player)
+			var player_visible := far_vision_detector.get_overlapping_bodies().has(player)
 			var path_finished := nav_agent.is_navigation_finished()
 			if !player_visible and path_finished:
 				enter_state(State.IDLE)
 			if player_visible:
-				nav_agent.target_position = %Player.global_position
+				nav_agent.target_position = player.global_position
 
 
 func enter_state(new_state: State) -> void:
@@ -94,7 +99,7 @@ func enter_state(new_state: State) -> void:
 		State.SUSPICIOUS:
 			nav_agent.target_position = global_position
 		State.CHASING:
-			nav_agent.target_position = %Player.global_position
+			nav_agent.target_position = player.global_position
 	
 func move(_delta: float) -> void:
 	if nav_agent.is_navigation_finished():
@@ -109,3 +114,9 @@ func move(_delta: float) -> void:
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 	move_and_slide()
+
+
+func randomize_sprite() -> void:
+	sprite.region_rect.position.x = 16 * randi_range(0, 1)
+	sprite.region_rect.position.y = 32 * randi_range(0, 4)
+	
