@@ -42,52 +42,52 @@ position = Vector2(-24, 240)
 texture = SubResource("AtlasTexture_nbx2p")
 
 [node name="Building_01_4x4_01" parent="." unique_id=876175604 instance=ExtResource("2_huyt8")]
-position = Vector2(360, 216)
+position = Vector2(0, -32)
 
 [node name="Building_01_4x4_02" parent="." unique_id=1886591272 instance=ExtResource("3_j8ldu")]
-position = Vector2(8, 520)
+position = Vector2(128, -32)
 
 [node name="Building_02_4x8_01" parent="." unique_id=1624677356 instance=ExtResource("4_h1uls")]
-position = Vector2(440, 512)
+position = Vector2(256, -32)
 
 [node name="Building_03_8x4_01" parent="." unique_id=1936962175 instance=ExtResource("5_ryfsh")]
-position = Vector2(0, 8)
+position = Vector2(0, 96)
 
 [node name="Building_04_8x8_01" parent="." unique_id=2074693004 instance=ExtResource("6_7rv4o")]
-position = Vector2(128, 8)
+position = Vector2(128, 96)
 
 [node name="Building_05_8x16_01" parent="." unique_id=1321249231 instance=ExtResource("7_6wajk")]
-position = Vector2(320, 8)
+position = Vector2(320, 96)
 
 [node name="Building_06_16x8_01" parent="." unique_id=155215536 instance=ExtResource("8_jbx0b")]
-position = Vector2(0, 200)
+position = Vector2(0, 288)
 
 [node name="Building_08_8x8_L_01" parent="." unique_id=633425226 instance=ExtResource("10_j8ldu")]
-position = Vector2(640, 8)
+position = Vector2(640, 96)
 
 [node name="Building_08_8x8_L_02" parent="." unique_id=494380869 instance=ExtResource("11_h1uls")]
-position = Vector2(832, 8)
+position = Vector2(832, 96)
 
 [node name="Building_08_8x8_L_03" parent="." unique_id=1268836507 instance=ExtResource("12_ryfsh")]
-position = Vector2(1024, 8)
+position = Vector2(1024, 96)
 
 [node name="Building_08_8x8_L_04" parent="." unique_id=1563551400 instance=ExtResource("13_7rv4o")]
-position = Vector2(1216, 8)
+position = Vector2(1216, 96)
 
 [node name="Building_09_16x8_L_01" parent="." unique_id=914543123 instance=ExtResource("14_6wajk")]
-position = Vector2(192, 200)
+position = Vector2(192, 288)
 
 [node name="Building_09_16x8_L_02" parent="." unique_id=66837635 instance=ExtResource("15_jbx0b")]
-position = Vector2(512, 200)
+position = Vector2(512, 288)
 
 [node name="Building_09_16x8_L_03" parent="." unique_id=1233379921 instance=ExtResource("16_kfed1")]
-position = Vector2(832, 200)
+position = Vector2(832, 288)
 
 [node name="Building_09_16x8_L_04" parent="." unique_id=1606121563 instance=ExtResource("17_2e63u")]
-position = Vector2(1152, 200)
+position = Vector2(1152, 288)
 
 [node name="Building_07_16x16_01" parent="." unique_id=1032572541 instance=ExtResource("9_kfed1")]
-position = Vector2(680, 392)
+position = Vector2(0, 608)
 
 [node name="Building_07_16x16_02" parent="." unique_id=1212021041 instance=ExtResource("18_jacsl")]
-position = Vector2(136, 512)
+position = Vector2(320, 608)
