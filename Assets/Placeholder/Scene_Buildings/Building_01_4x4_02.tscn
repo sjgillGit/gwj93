@@ -13,7 +13,7 @@ tile_set = ExtResource("1_t41ks")
 [node name="Backwall" type="TileMapLayer" parent="." unique_id=786619682]
 visibility_layer = 32
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAAUAAAAAAAAAAEAAAAUAAEAAAACAAAAAAAWAAAAAAACAAEAAAAWAAEAAAADAAAAAAAXAAAAAAADAAEAAAAXAAEAAAABAAAAAAAVAAAAAAABAAEAAAABAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAUAAAAAAAAAAEAAAAUAAEAAAACAAAAAAAWAAAAAAACAAEAAAAWAAEAAAADAAAAAAAXAAAAAAADAAEAAAAXAAEAAAABAAAAAAAVAAAAAAA=")
 tile_set = ExtResource("1_t41ks")
 
 [node name="BackDoor" type="TileMapLayer" parent="." unique_id=375284853]
