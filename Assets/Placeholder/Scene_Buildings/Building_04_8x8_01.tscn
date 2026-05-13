@@ -1,8 +1,13 @@
 [gd_scene format=4 uid="uid://xxple3xyyeh"]
 
+[ext_resource type="Script" uid="uid://8kjnyvfqasii" path="res://Scenes/building.gd" id="1_l48rw"]
 [ext_resource type="TileSet" uid="uid://c2keyeft1w1rg" path="res://Assets/Placeholder/Resource/buildings_tile_set.tres" id="2_l48rw"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5a4m"]
+size = Vector2(128, 128)
+
 [node name="Building_04_8x8_01" type="Node2D" unique_id=876175604]
+script = ExtResource("1_l48rw")
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=1869326267]
 visibility_layer = 16
@@ -52,3 +57,12 @@ offset_right = 68.0
 offset_bottom = 55.0
 text = "floor 8x8"
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=498227431]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1086857201]
+position = Vector2(64, 96)
+shape = SubResource("RectangleShape2D_y5a4m")
+debug_color = Color(0.78576493, 0.40921003, 0.38810116, 0.41960785)
