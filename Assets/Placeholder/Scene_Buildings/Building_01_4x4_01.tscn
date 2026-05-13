@@ -1,0 +1,53 @@
+[gd_scene format=4 uid="uid://n5ls2rxgqy5c"]
+
+[ext_resource type="TileSet" uid="uid://c2keyeft1w1rg" path="res://Assets/Placeholder/Resource/buildings_tile_set.tres" id="1_cj426"]
+
+[node name="Building_01_4x4_01" type="Node2D" unique_id=876175604]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1869326267]
+visibility_layer = 16
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAIAAAAHABgAAAACAAIAAAAHABgAAAADAAIAAAAIABgAAAAAAAIAAAAGABgAAAAAAAUAAAAGABkAAAABAAUAAAAHABkAAAACAAUAAAAHABkAAAADAAUAAAAIABkAAAAAAAMAAAAGABgAAAABAAMAAAAHABgAAAACAAMAAAAHABgAAAADAAMAAAAIABgAAAAAAAQAAAAGABgAAAABAAQAAAAHABgAAAACAAQAAAAHABgAAAADAAQAAAAIABgAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="Backwall" type="TileMapLayer" parent="." unique_id=786619682]
+visibility_layer = 32
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAAAAAAZAAAAAAACAAAAAAAaAAAAAAADAAAAAAAbAAAAAAADAAEAAAAbAAEAAAAAAAAAAAAYAAAAAAAAAAEAAAAYAAEAAAACAAEAAAAaAAEAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="BackDoor" type="TileMapLayer" parent="." unique_id=375284853]
+visibility_layer = 32
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAAAAAAEABYAAAABAAEAAAAEABcAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="FrontWall" type="TileMapLayer" parent="." unique_id=1807533291]
+visibility_layer = 64
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAQAAAAZAAEAAAACAAQAAAAaAAQAAAADAAQAAAAbAAQAAAADAAUAAAAbAAQAAAAAAAQAAAAYAAQAAAAAAAUAAAAYAAQAAAACAAUAAAAaAAQAAAAAAAMAAAAYAAYAAAABAAMAAAAZAAYAAAACAAMAAAAaAAYAAAADAAMAAAAbAAYAAAAAAAIAAAAYAAIAAAADAAIAAAAbAAIAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="FrontDoor" type="TileMapLayer" parent="." unique_id=1574129833]
+visibility_layer = 64
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAQAAAAEABYAAAABAAUAAAAEABcAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="Roof" type="TileMapLayer" parent="." unique_id=2006618110]
+visibility_layer = 128
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD//wIAAAAAAA0AAAD//wMAAAAAAA4AAAAAAAIAAAABAA0AAAAAAAMAAAABAA4AAAABAAIAAAACAA0AAAABAAMAAAACAA4AAAACAAIAAAADAA0AAAACAAMAAAADAA4AAAADAAIAAAAEAA0AAAADAAMAAAAEAA4AAAAEAAIAAAAFAA0AAAAEAAMAAAAFAA4AAAD/////AAAAAAwAAAAAAP//AAABAAwAAAABAP//AAACAAwAAAACAP//AAADAAwAAAADAP//AAAEAAwAAAAEAP//AAAFAAwAAAD//wEAAAAAAA0AAAAAAAEAAAABAA0AAAABAAEAAAACAA0AAAACAAEAAAADAA0AAAADAAEAAAAEAA0AAAAEAAEAAAAFAA0AAAD//wAAAAAAAA0AAAAAAAAAAAABAA0AAAABAAAAAAACAA0AAAACAAAAAAADAA0AAAADAAAAAAAEAA0AAAAEAAAAAAAFAA0AAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="Chimney" type="TileMapLayer" parent="." unique_id=407069488]
+visibility_layer = 128
+texture_filter = 1
+tile_map_data = PackedByteArray("AAACAAAAAAAAABQAAAA=")
+tile_set = ExtResource("1_cj426")
+
+[node name="Label" type="Label" parent="." unique_id=1440249169]
+offset_top = 32.0
+offset_right = 68.0
+offset_bottom = 55.0
+text = "floor 4x4"
