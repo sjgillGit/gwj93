@@ -3,8 +3,7 @@ class_name Slot extends Node2D
 
 #signal collapse_me
 
-@warning_ignore("onready_with_export")
-@export @onready var modules: Node = $Modules
+@onready var modules: Node = $Modules
 @onready var inactive: Node = $Inactive
 @onready var label: Label = $Label
 
@@ -17,6 +16,13 @@ class_name Slot extends Node2D
 	#$Button.text = str(modules.get_child_count())
 	#if modules.get_child_count() == 1:
 		#$Button.hide()
+		
+func remove_module(module: Module) -> void:
+	module.reparent(inactive)
+	module.queue_free()
+		
+func force_checkpoint() -> void:
+	modules.get_node("Block")
 
 
 func _on_inactive_child_order_changed() -> void:

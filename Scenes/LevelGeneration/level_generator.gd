@@ -17,6 +17,7 @@ const block_grid_height: int = 15
 
 # 2d array with rows first
 var slots: Array[Slot]
+var citizens: Array[Citizen]
 
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -29,6 +30,11 @@ func clear() -> void:
 		remove_child(slot)
 	
 	slots.clear()
+	
+	for citizen in citizens:
+		citizen.queue_free()
+	
+	citizens.clear()
 	
 	
 func setup() -> void:
@@ -104,7 +110,7 @@ func place_citizens() -> void:
 		var citizen := citizen_scene.instantiate()
 		add_sibling.call_deferred(citizen)
 		citizen.global_position = Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
-#	pass
+		citizens.append(citizen)
 	
 func update_navigation() -> void:
 	# wait a few seconds for unused modules to get deleted
@@ -113,24 +119,25 @@ func update_navigation() -> void:
 	nav_region.bake_navigation_polygon()
 	
 
+# Ignores corners
 func get_border_coords() -> Array[Vector2i]:
 	# create array of rotating coordinates
 	var border_coords: Array[Vector2i]
 	
 	# top left to top right
-	for x in range(1, block_grid_width):
+	for x in range(1, block_grid_width - 1):
 		border_coords.append(Vector2i(x, 0))
 	
 	# top right to bot right
-	for y in range(1, block_grid_height):
+	for y in range(1, block_grid_height - 1):
 		border_coords.append(Vector2i(block_grid_width - 1, y))
 	
 	# bot right to bot left
-	for x in range(block_grid_width - 2, -1, -1):
+	for x in range(block_grid_width - 2, 0, -1):
 		border_coords.append(Vector2i(x, block_grid_height - 1))
 	
 	# bot left to top left
-	for y in range(block_grid_height - 2, -1, -1):
+	for y in range(block_grid_height - 2, 0, -1):
 		border_coords.append(Vector2i(0, y))
 		
 	return border_coords
@@ -151,7 +158,7 @@ func place_border() -> void:
 	
 	# add a random offset
 	@warning_ignore("integer_division")
-	var offset: int = randi_range(0, border_block_count / 2)
+	var offset: int = randi_range(0, border_block_count)
 	start_block_idx += offset
 	end_block_idx += offset
 	end_block_idx %= border_block_count
@@ -159,13 +166,20 @@ func place_border() -> void:
 	
 	# now force the block module for the two slots
 	# NOTE: optimize by only accessing the start and end index not looping
-	for idx in border_coords.size():
-		#get_slot(border_coords[idx]).get_label().text = str(idx)
-		if idx == start_block_idx or idx == end_block_idx:
-			force_block(border_coords[idx], "Block")
-			get_slot(border_coords[idx]).modulate = Color.RED
-		#force_block(coord, "Block")
-
+	var start_coords := border_coords[start_block_idx]
+	var end_coords := border_coords[end_block_idx]
+	
+	if start_coords.x == 0 or start_coords.x == block_grid_width - 1:
+		force_block(start_coords, "Horizontal")
+	else:
+		force_block(start_coords, "Vertical")
+	get_slot(start_coords).modulate = Color.RED
+	
+	force_block(end_coords, "FourWay")
+	get_slot(end_coords).modulate = Color.RED
+	
+	var player: Player = get_node("../Player")
+	player.global_position = get_slot(start_coords).global_position + Vector2(block_pixel_size, block_pixel_size) / 2
 
 
 func index_to_coord(idx: int) -> Vector2i:
@@ -186,8 +200,7 @@ func force_block(pos: Vector2i, block: String) -> void:
 	# now remove the other modules
 	for module in modules:
 		if module != selected_module:
-			module.reparent(slot.inactive)
-			module.queue_free()
+			slot.remove_module(module)
 
 func collapse(pos: Vector2i) -> void:
 	# randomly picks a pos for the slot at pos and then
@@ -201,8 +214,7 @@ func collapse(pos: Vector2i) -> void:
 	# now remove the other modules
 	for module in modules:
 		if module != selected_module:
-			module.reparent(slot.inactive)
-			module.queue_free()
+			slot.remove_module(module)
 	
 	selected_module.show()
 			
@@ -268,7 +280,7 @@ func update(pos: Vector2i) -> void:
 				break
 		
 		if !module_valid:
-			module.reparent(slot.inactive)
+			slot.remove_module(module)
 			changed = true
 		
 	# if changed then update neighbors
@@ -283,5 +295,3 @@ func update(pos: Vector2i) -> void:
 		update(pos + Vector2i.LEFT)
 		#await get_tree().create_timer(0.5).timeout
 		update(pos + Vector2i.RIGHT)
-	
-	

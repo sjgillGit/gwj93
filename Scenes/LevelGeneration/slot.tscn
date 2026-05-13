@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://n7mbca5ev311" path="res://Scenes/LevelGeneration/slot.gd" id="1_67x5h"]
 [ext_resource type="TileSet" uid="uid://b1vgdw0essfir" path="res://Scenes/LevelGeneration/tile_set.tres" id="2_67x5h"]
 [ext_resource type="Script" uid="uid://p2o2otdx36y4" path="res://Scenes/LevelGeneration/module.gd" id="2_80t34"]
-[ext_resource type="PackedScene" uid="uid://bsgcolbvamoct" path="res://Scenes/building.tscn" id="4_4qxx8"]
+[ext_resource type="PackedScene" uid="uid://xxple3xyyeh" path="res://Assets/Placeholder/Scene_Buildings/Building_04_8x8_01.tscn" id="4_4qxx8"]
 
-[node name="Slot" type="Node2D" unique_id=716141078 node_paths=PackedStringArray("modules")]
+[node name="Slot" type="Node2D" unique_id=716141078]
 script = ExtResource("1_67x5h")
-modules = NodePath("Modules")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2059518730]
 visible = false
@@ -19,6 +18,7 @@ color = Color(1, 0.43, 0.43, 1)
 
 [node name="FourWay" type="Node2D" parent="Modules" unique_id=776265891]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 
 [node name="Main" type="TileMapLayer" parent="Modules/FourWay" unique_id=93561898]
@@ -31,6 +31,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="DownT" type="Node2D" parent="Modules" unique_id=1400772062]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -49,6 +50,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="UpT" type="Node2D" parent="Modules" unique_id=920577580]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -67,6 +69,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="RightT" type="Node2D" parent="Modules" unique_id=1282370913]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -85,6 +88,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="LeftT" type="Node2D" parent="Modules" unique_id=1299482703]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -103,6 +107,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="Horizontal" type="Node2D" parent="Modules" unique_id=2097295133]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -124,6 +129,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="Vertical" type="Node2D" parent="Modules" unique_id=823941703]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -144,7 +150,6 @@ tile_map_data = PackedByteArray("AAADAAAAAAAJAAcAAAAEAAAAAAAKAAcAAAADAAEAAAAJAAc
 tile_set = ExtResource("2_67x5h")
 
 [node name="Block" type="Node2D" parent="Modules" unique_id=1253664999]
-visible = false
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -161,12 +166,12 @@ tile_set = ExtResource("2_67x5h")
 [node name="Lines" type="TileMapLayer" parent="Modules/Block/Main" unique_id=1872141446]
 tile_set = ExtResource("2_67x5h")
 
-[node name="Building" parent="Modules/Block" unique_id=95963998 instance=ExtResource("4_4qxx8")]
-position = Vector2(64, 99)
-scale = Vector2(1, 1.529)
+[node name="Building_04_8x8_01" parent="Modules/Block" unique_id=876175604 instance=ExtResource("4_4qxx8")]
+position = Vector2(0, -32)
 
 [node name="Left" type="Node2D" parent="Modules" unique_id=241570654]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -187,6 +192,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="Right" type="Node2D" parent="Modules" unique_id=1449765131]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -207,6 +213,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="Top" type="Node2D" parent="Modules" unique_id=876981717]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -227,6 +234,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="Down" type="Node2D" parent="Modules" unique_id=1760169106]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -247,6 +255,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="UpRight" type="Node2D" parent="Modules" unique_id=510921986]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -266,6 +275,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="UpLeft" type="Node2D" parent="Modules" unique_id=839843596]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 1,
@@ -285,6 +295,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="DownRight" type="Node2D" parent="Modules" unique_id=103420176]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,
@@ -304,6 +315,7 @@ tile_set = ExtResource("2_67x5h")
 
 [node name="DownLeft" type="Node2D" parent="Modules" unique_id=2058459454]
 visible = false
+z_index = -1
 script = ExtResource("2_80t34")
 paths = Dictionary[int, int]({
 0: 0,

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bbke32njlpmeq"]
 
 [ext_resource type="PackedScene" uid="uid://cjpadiddp1g0h" path="res://Scenes/player.tscn" id="1_yh5la"]
-[ext_resource type="PackedScene" uid="uid://beapo2vboq3tr" path="res://Scenes/interactable.tscn" id="2_eunhr"]
 [ext_resource type="PackedScene" uid="uid://lm8wd217qmun" path="res://Scenes/LevelGeneration/level_generator.tscn" id="5_k3v36"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ib3t1"]
@@ -10,18 +9,16 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-58, -58, 2652, -86, 2657, 2019, -100, 2083)])
 source_geometry_mode = 1
 source_geometry_group_name = &"nav_blocker"
+agent_radius = 6.0
 
 [node name="Main" type="Node2D" unique_id=197704852]
 y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=1825991017 instance=ExtResource("1_yh5la")]
 unique_name_in_owner = true
-position = Vector2(477, 349)
+position = Vector2(64, 1088)
 
-[node name="Interactable" parent="." unique_id=1062114288 instance=ExtResource("2_eunhr")]
-position = Vector2(528, 344)
-
-[node name="LevelGenerator" parent="." unique_id=609460223 node_paths=PackedStringArray("nav_region") instance=ExtResource("5_k3v36")]
+[node name="LevelGenerator" parent="." unique_id=609460223 node_paths=PackedStringArray("nav_region") groups=["nav_blocker"] instance=ExtResource("5_k3v36")]
 z_index = -1
 nav_region = NodePath("../NavigationRegion2D")
 
