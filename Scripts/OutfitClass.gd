@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Outfit
+class_name OutfitClass
 
 @export var length : float
 @export var thickness : float

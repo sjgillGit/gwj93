@@ -22,14 +22,18 @@ enum Style {
 @export var color: ClothColor
 
 
-func outfit_calc(length, thickness, size, color, color_list, style, style_list):
-	var color_bonus = 0
-	var style_bonus = 0
+func calculate_difference_score(other: ClothingItem) -> float:
+	var color_bonus: float = 0.0
+	var style_bonus: float = 0.0
 
-	if not color in color_list:
+	if color != other.color:
 		color_bonus = 50
-	if not style in style_list:
+	if style != other.style:
 		style_bonus = 50
-		
-	var score = (length + thickness + color_bonus + style_bonus) * (size / 100)
+	
+	var length_diff: float = abs(length - other.length)
+	var thickness_diff: float = abs(thickness - other.thickness)
+	
+	var score: float = length_diff + thickness_diff + color_bonus + style_bonus
+	
 	return score
