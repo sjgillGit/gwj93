@@ -19,10 +19,6 @@ class_name Slot extends Node2D
 		
 func remove_module(module: Module) -> void:
 	module.reparent(inactive)
-	module.queue_free()
-		
-func force_checkpoint() -> void:
-	modules.get_node("Block")
 
 
 func _on_inactive_child_order_changed() -> void:

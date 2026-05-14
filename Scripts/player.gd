@@ -9,6 +9,11 @@ const moveFriction: int = 5000
 @onready var interaction_detector: Area2D = $InteractionDetector
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var camera: Camera2D = $Camera2D
+
+func _ready() -> void:
+	camera.position_smoothing_enabled = false
+	camera.set_deferred("position_smoothing_enabled", true)
 
 func _physics_process(delta: float) -> void:
 	move(delta)

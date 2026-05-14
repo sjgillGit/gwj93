@@ -2,7 +2,9 @@ extends Node2D
 
 
 @onready var player_detector: Area2D = $PlayerDetector
-@onready var transparency_group: Array[Node2D] = [$Chimney, $Roof, $FrontWall, $FrontDoor]
+@onready var transparency_group: Array[Node2D] = [$Chimney, $Roof, $FrontWall, $FrontDoor, $TopFrontWall, $Top]
+
+
 
 func _ready() -> void:
 	player_detector.body_entered.connect(_on_player_detector_body_entered)
@@ -10,9 +12,11 @@ func _ready() -> void:
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
 	for node in transparency_group:
-		node.modulate.a = 0.1
+		node.modulate.a = 0.5
 
 
 func _on_player_detector_body_exited(body: Node2D) -> void:
+	if player_detector.get_overlapping_bodies().size() > 0:
+		return
 	for node in transparency_group:
 		node.modulate.a = 1

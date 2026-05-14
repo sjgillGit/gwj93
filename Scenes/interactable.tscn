@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://beapo2vboq3tr"]
 
-[ext_resource type="Script" uid="uid://u8oj4yvg1pr7" path="res://Scenes/interactable.gd" id="1_pmsje"]
+[ext_resource type="Script" path="res://Scenes/interactable.gd" id="1_pmsje"]
 [ext_resource type="Texture2D" uid="uid://ci42ytucnaxso" path="res://Assets/Placeholder/Character/headgear_16x32.png" id="2_73reo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6fdm"]
@@ -24,6 +24,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 17, 10)
 
 [node name="Label" type="Label" parent="." unique_id=1306535868]
+visible = false
+z_index = 1
 offset_left = -11.092743
 offset_top = -10.906466
 offset_right = 28.907257

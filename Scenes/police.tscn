@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dhl0f1yhh5c3o"]
+
+[ext_resource type="PackedScene" uid="uid://dbr3rnh3uurh3" path="res://Scenes/citizen.tscn" id="1_kjctq"]
+[ext_resource type="Script" uid="uid://e3hdtdjyxvhl" path="res://Scenes/police.gd" id="2_b50pw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5t67j"]
+radius = 55.081757
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b50pw"]
+radius = 106.381386
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8r43d"]
+radius = 194.16487
+
+[node name="Police" unique_id=2071423212 instance=ExtResource("1_kjctq")]
+script = ExtResource("2_b50pw")
+
+[node name="CollisionShape2D" parent="CloseVisionDetector" parent_id_path=PackedInt32Array(1772761351) index="0" unique_id=798222462]
+shape = SubResource("CircleShape2D_5t67j")
+
+[node name="VisionDetector" parent="." index="3" unique_id=395274643]
+collision_mask = 9
+
+[node name="CollisionShape2D" parent="VisionDetector" index="0" unique_id=321840034]
+shape = SubResource("CircleShape2D_b50pw")
+
+[node name="FarVisionDetector" parent="." index="4" unique_id=31294019]
+collision_mask = 9
+
+[node name="CollisionShape2D" parent="FarVisionDetector" index="0" unique_id=837106138]
+shape = SubResource("CircleShape2D_8r43d")
+
+[node name="PoliceTag" type="Label" parent="." index="7" unique_id=35430457]
+offset_left = -18.0
+offset_top = -51.0
+offset_right = 28.0
+offset_bottom = -28.0
+text = "Police"

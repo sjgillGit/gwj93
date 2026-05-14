@@ -2,5 +2,12 @@
 
 [ext_resource type="Script" uid="uid://s1stwxeuu1be" path="res://Scenes/LevelGeneration/level_generator.gd" id="1_xgtxp"]
 
-[node name="LevelGenerator" type="Node2D" unique_id=609460223]
+[node name="LevelGenerator" type="Node2D" unique_id=1544439711 groups=["nav_blocker"]]
+y_sort_enabled = true
 script = ExtResource("1_xgtxp")
+auto_generate = null
+
+[node name="NavChecker" type="Node2D" parent="." unique_id=1694619728]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="NavChecker" unique_id=374544970]
+debug_enabled = true

@@ -2,28 +2,41 @@
 
 const slot_scene: PackedScene = preload("res://Scenes/LevelGeneration/slot.tscn")
 const citizen_scene = preload("res://Scenes/citizen.tscn")
+const police_scene = preload("res://Scenes/police.tscn")
 
-const min_citizen: int = 20
-const max_citizen: int = 50
+const min_citizen: int = 40
+const max_citizen: int = 45
+const min_police: int = 10
+const max_police: int = 15
 const tiles_in_block: int = 8
 const tile_size: int = 16
 const block_pixel_size: int = tile_size * tiles_in_block
+const half_block_vector: Vector2 = Vector2(block_pixel_size, block_pixel_size) / 2
 const block_grid_width: int = 20
 const block_grid_height: int = 15
 
 @export_tool_button("Generate") var generate_action = regenerate
 @export_tool_button("Clear") var clear_action = clear
 @export var nav_region: NavigationRegion2D
+@export var auto_generate: bool = false
 
 # 2d array with rows first
 var slots: Array[Slot]
-var citizens: Array[Citizen]
+var citizens: Array[Node2D]
+var start_slot: Slot
+var start_coords: Vector2i
+var end_slot: Slot
+var end_coords: Vector2i
 
 @onready var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var nav_checker: Node2D = $NavChecker
+@onready var nav_checker_agent: NavigationAgent2D = $NavChecker/NavigationAgent2D
 
 func _ready() -> void:
-	regenerate()
-	
+	if !Engine.is_editor_hint() and auto_generate:
+		regenerate()
+		
+
 func clear() -> void:
 	for slot in slots:
 		slot.queue_free()
@@ -95,7 +108,21 @@ func generate() -> void:
 		
 		# remove from array
 		to_process.remove_at(to_process.find(min_slot))
-
+		
+	# perform navigation check and restart if needed
+	var astar: AStarGrid2D = AStarGrid2D.new()
+	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar.region = Rect2i(0, 0, block_grid_width, block_grid_height)
+	astar.update()
+	for x in block_grid_width:
+		for y in block_grid_height:
+			var pos := Vector2i(x,y)
+			if get_slot(pos).modules.get_child(0) is BlockModule:
+				astar.set_point_solid(pos)
+	if astar.get_id_path(start_coords, end_coords).size() == 0:
+		regenerate()
+		return
+	
 	# clean up and prep
 	if Engine.is_editor_hint():
 		return
@@ -106,11 +133,33 @@ func generate() -> void:
 	
 func place_citizens() -> void:
 	var citizen_count := randi_range(min_citizen, max_citizen)
+	var player_pos := get_slot(start_coords).global_position + half_block_vector
 	for c in citizen_count:
 		var citizen := citizen_scene.instantiate()
 		add_sibling.call_deferred(citizen)
-		citizen.global_position = Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+		
+		# Set random position
+		var min_distance := block_pixel_size
+		var random_pos := Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+		while random_pos.distance_squared_to(player_pos) < min_distance * min_distance:
+			random_pos = Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+		citizen.global_position = random_pos	
+		
 		citizens.append(citizen)
+		
+	var police_count := randi_range(min_police, max_police)
+	for p in police_count:
+		var police := police_scene.instantiate()
+		add_sibling.call_deferred(police)
+		
+		# random space on the map that is not close to player
+		var min_distance := block_pixel_size * 2.0
+		var random_pos := Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+		while random_pos.distance_squared_to(player_pos) < min_distance * min_distance:
+			random_pos = Vector2(randf_range(0, block_grid_width * block_pixel_size), randf_range(0, block_grid_height * block_pixel_size))
+		police.global_position = random_pos
+		
+		citizens.append(police)
 	
 func update_navigation() -> void:
 	# wait a few seconds for unused modules to get deleted
@@ -166,20 +215,28 @@ func place_border() -> void:
 	
 	# now force the block module for the two slots
 	# NOTE: optimize by only accessing the start and end index not looping
-	var start_coords := border_coords[start_block_idx]
-	var end_coords := border_coords[end_block_idx]
+	start_coords = border_coords[start_block_idx]
+	end_coords = border_coords[end_block_idx]
+	start_slot = get_slot(start_coords)
+	end_slot = get_slot(end_coords)
 	
+	# Place start block
 	if start_coords.x == 0 or start_coords.x == block_grid_width - 1:
 		force_block(start_coords, "Horizontal")
 	else:
 		force_block(start_coords, "Vertical")
-	get_slot(start_coords).modulate = Color.RED
+	start_slot.modulate = Color.RED
 	
-	force_block(end_coords, "FourWay")
-	get_slot(end_coords).modulate = Color.RED
+	# Place checkpoint
+	if end_coords.x == 0 or end_coords.x == block_grid_width - 1:
+		force_block(end_coords, "Horizontal")
+	else:
+		force_block(end_coords, "Vertical")
+	end_slot.modulate = Color.RED
 	
+	# Place player
 	var player: Player = get_node("../Player")
-	player.global_position = get_slot(start_coords).global_position + Vector2(block_pixel_size, block_pixel_size) / 2
+	player.global_position = get_slot(start_coords).global_position + half_block_vector
 
 
 func index_to_coord(idx: int) -> Vector2i:

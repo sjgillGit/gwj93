@@ -6,11 +6,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6fdm"]
 size = Vector2(8, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cv82"]
+radius = 55.081757
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rj11h"]
-radius = 69.115845
+radius = 81.09871
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wxrsi"]
-radius = 139.43457
+radius = 124.78782
 
 [sub_resource type="Animation" id="Animation_wxrsi"]
 length = 0.001
@@ -133,7 +136,7 @@ _data = {
 font_size = 12
 
 [node name="Citizen" type="CharacterBody2D" unique_id=2071423212]
-collision_layer = 0
+collision_layer = 8
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_wxrsi")
@@ -146,6 +149,13 @@ region_rect = Rect2(0, 64, 16, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=860627397]
 shape = SubResource("RectangleShape2D_f6fdm")
+
+[node name="CloseVisionDetector" type="Area2D" parent="." unique_id=1772761351]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseVisionDetector" unique_id=798222462]
+shape = SubResource("CircleShape2D_2cv82")
 
 [node name="VisionDetector" type="Area2D" parent="." unique_id=395274643]
 collision_layer = 0
@@ -165,12 +175,13 @@ target_desired_distance = 5.0
 avoidance_enabled = true
 radius = 5.0
 neighbor_distance = 100.0
-debug_enabled = true
+max_speed = 200.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1546826307]
 libraries/ = SubResource("AnimationLibrary_rdgp7")
 
 [node name="Label" type="Label" parent="." unique_id=719570659]
+visible = false
 offset_left = -19.0
 offset_top = -41.0
 offset_right = 21.0
