@@ -1,15 +1,53 @@
 [gd_scene format=3 uid="uid://bbke32njlpmeq"]
 
 [ext_resource type="PackedScene" uid="uid://cjpadiddp1g0h" path="res://Scenes/player.tscn" id="1_yh5la"]
-[ext_resource type="Texture2D" uid="uid://bn0xk03olbu76" path="res://icon.svg" id="2_2w1kt"]
+[ext_resource type="PackedScene" uid="uid://lm8wd217qmun" path="res://Scenes/LevelGeneration/level_generator.tscn" id="5_k3v36"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ib3t1"]
+vertices = PackedVector2Array(2646.9688, 2009.2188, -89.78906, 2072.75, -48.1875, -48.101563, 2642.0234, -75.890625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-17, -17, 2586, -31, 2598, 1945, -29, 1940)])
+source_geometry_mode = 1
+source_geometry_group_name = &"nav_blocker"
+agent_radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2w1kt"]
+size = Vector2(2669, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvhan"]
+size = Vector2(64, 1968)
 
 [node name="Main" type="Node2D" unique_id=197704852]
+y_sort_enabled = true
 
 [node name="Player" parent="." unique_id=1825991017 instance=ExtResource("1_yh5la")]
-position = Vector2(477, 349)
+unique_name_in_owner = true
+position = Vector2(576, 64)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2120026475]
-z_index = -1
-position = Vector2(671.5, 497)
-scale = Vector2(50, 38.14)
-texture = ExtResource("2_2w1kt")
+[node name="LevelGenerator" parent="." unique_id=609460223 node_paths=PackedStringArray("nav_region") instance=ExtResource("5_k3v36")]
+nav_region = NodePath("../NavigationRegion2D")
+auto_generate = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1055239458]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_ib3t1")
+
+[node name="Borders" type="StaticBody2D" parent="." unique_id=277217705 groups=["nav_blocker"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders" unique_id=1993896882]
+position = Vector2(1283, -8)
+shape = SubResource("RectangleShape2D_2w1kt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders" unique_id=1870561871]
+position = Vector2(-32, 973)
+shape = SubResource("RectangleShape2D_qvhan")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders" unique_id=2147401831]
+position = Vector2(2592, 953)
+shape = SubResource("RectangleShape2D_qvhan")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders" unique_id=509671566]
+position = Vector2(1283, 1947)
+shape = SubResource("RectangleShape2D_2w1kt")

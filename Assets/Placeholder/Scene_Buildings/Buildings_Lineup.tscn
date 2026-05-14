@@ -1,32 +1,23 @@
 [gd_scene format=3 uid="uid://puueywx6h8ta"]
 
-[ext_resource type="PackedScene" uid="uid://n5ls2rxgqy5c" path="res://Assets/Placeholder/Scene_Buildings/Building_01_4x4.tscn" id="1_gfrx7"]
 [ext_resource type="Texture2D" uid="uid://cv8qd5anvehev" path="res://Assets/Placeholder/Character/body_16x32.png" id="2_fhu5q"]
-[ext_resource type="PackedScene" uid="uid://dft6l1vfkreox" path="res://Assets/Placeholder/Scene_Buildings/Building_02_4x4.tscn" id="3_nbx2p"]
-[ext_resource type="PackedScene" uid="uid://c3fuxv3blk26m" path="res://Assets/Placeholder/Scene_Buildings/Building_03_4x5.tscn" id="4_xplhh"]
-[ext_resource type="PackedScene" uid="uid://rbndy3whl7o" path="res://Assets/Placeholder/Scene_Buildings/Building_04_4x6.tscn" id="5_xplhh"]
-[ext_resource type="PackedScene" uid="uid://bhqolfyf0jscp" path="res://Assets/Placeholder/Scene_Buildings/Building_05_4x7.tscn" id="6_3dwbx"]
-[ext_resource type="PackedScene" uid="uid://b63vnntylto7r" path="res://Assets/Placeholder/Scene_Buildings/Building_06_4x8.tscn" id="7_wlcjd"]
-[ext_resource type="PackedScene" uid="uid://bmjpbn7wb8dx2" path="res://Assets/Placeholder/Scene_Buildings/Building_07_5x4.tscn" id="8_jogb5"]
-[ext_resource type="PackedScene" uid="uid://khgmw30kvdfy" path="res://Assets/Placeholder/Scene_Buildings/Building_08_5x5.tscn" id="9_huyt8"]
-[ext_resource type="PackedScene" uid="uid://dbg3hyxdc8orv" path="res://Assets/Placeholder/Scene_Buildings/Building_09_5x6.tscn" id="10_h1uls"]
-[ext_resource type="PackedScene" uid="uid://bksguak53gsek" path="res://Assets/Placeholder/Scene_Buildings/Building_10_5x7.tscn" id="11_ryfsh"]
-[ext_resource type="PackedScene" uid="uid://cv5qlbm8igb4x" path="res://Assets/Placeholder/Scene_Buildings/Building_11_5x8.tscn" id="12_ryfsh"]
-[ext_resource type="PackedScene" uid="uid://cs8j3ety673ti" path="res://Assets/Placeholder/Scene_Buildings/Building_12_6x4.tscn" id="13_7rv4o"]
-[ext_resource type="PackedScene" uid="uid://snycehw31c7w" path="res://Assets/Placeholder/Scene_Buildings/Building_13_6x5.tscn" id="14_6wajk"]
-[ext_resource type="PackedScene" uid="uid://d2flg1167hjg7" path="res://Assets/Placeholder/Scene_Buildings/Building_14_6x6.tscn" id="15_jbx0b"]
-[ext_resource type="PackedScene" uid="uid://c6n0v7hqnxmdr" path="res://Assets/Placeholder/Scene_Buildings/Building_15_6x7.tscn" id="16_2e63u"]
-[ext_resource type="PackedScene" uid="uid://bitkglam2rwda" path="res://Assets/Placeholder/Scene_Buildings/Building_16_6x8.tscn" id="17_jacsl"]
-[ext_resource type="PackedScene" uid="uid://dvci8jp1aqolq" path="res://Assets/Placeholder/Scene_Buildings/Building_17_7x4.tscn" id="18_jacsl"]
-[ext_resource type="PackedScene" uid="uid://cuaxmvr6m4ut7" path="res://Assets/Placeholder/Scene_Buildings/Building_18_7x5.tscn" id="19_4ljsg"]
-[ext_resource type="PackedScene" uid="uid://dty7inpxw04yq" path="res://Assets/Placeholder/Scene_Buildings/Building_19_7x6.tscn" id="20_sfu7w"]
-[ext_resource type="PackedScene" uid="uid://bhcwxgdef1rhu" path="res://Assets/Placeholder/Scene_Buildings/Building_20_7x7.tscn" id="21_0e1dn"]
-[ext_resource type="PackedScene" uid="uid://cbt8cpa7bqea6" path="res://Assets/Placeholder/Scene_Buildings/Building_21_7x8.tscn" id="22_jofo3"]
-[ext_resource type="PackedScene" uid="uid://bu5pp21xcrse1" path="res://Assets/Placeholder/Scene_Buildings/Building_22_8x4.tscn" id="23_y63k5"]
-[ext_resource type="PackedScene" uid="uid://d3y22fq2xqlk6" path="res://Assets/Placeholder/Scene_Buildings/Building_23_8x5.tscn" id="24_m4fex"]
-[ext_resource type="PackedScene" uid="uid://bruqdbffh2k36" path="res://Assets/Placeholder/Scene_Buildings/Building_24_8x6.tscn" id="25_pnjja"]
-[ext_resource type="PackedScene" uid="uid://cv8fu4wyyt4vu" path="res://Assets/Placeholder/Scene_Buildings/Building_25_8x7.tscn" id="26_lpxnh"]
-[ext_resource type="PackedScene" uid="uid://xxple3xyyeh" path="res://Assets/Placeholder/Scene_Buildings/Building_26_8x8.tscn" id="27_gqpjw"]
+[ext_resource type="PackedScene" uid="uid://n5ls2rxgqy5c" path="res://Assets/Placeholder/Scene_Buildings/Building_01_4x4_01.tscn" id="2_huyt8"]
+[ext_resource type="PackedScene" uid="uid://dft6l1vfkreox" path="res://Assets/Placeholder/Scene_Buildings/Building_01_4x4_02.tscn" id="3_j8ldu"]
+[ext_resource type="PackedScene" uid="uid://b63vnntylto7r" path="res://Assets/Placeholder/Scene_Buildings/Building_02_4x8_01.tscn" id="4_h1uls"]
+[ext_resource type="PackedScene" uid="uid://bu5pp21xcrse1" path="res://Assets/Placeholder/Scene_Buildings/Building_03_8x4_01.tscn" id="5_ryfsh"]
+[ext_resource type="PackedScene" uid="uid://xxple3xyyeh" path="res://Assets/Placeholder/Scene_Buildings/Building_04_8x8_01.tscn" id="6_7rv4o"]
+[ext_resource type="PackedScene" uid="uid://b5pqdiw2sipk4" path="res://Assets/Placeholder/Scene_Buildings/Building_05_8x16_01.tscn" id="7_6wajk"]
+[ext_resource type="PackedScene" uid="uid://2q2htihhfpoi" path="res://Assets/Placeholder/Scene_Buildings/Building_06_16x8_01.tscn" id="8_jbx0b"]
+[ext_resource type="PackedScene" uid="uid://dvvl6gkq2rjdy" path="res://Assets/Placeholder/Scene_Buildings/Building_07_16x16_01.tscn" id="9_kfed1"]
+[ext_resource type="PackedScene" uid="uid://dtkg5qv8uw2uq" path="res://Assets/Placeholder/Scene_Buildings/Building_08_8x8_L_01.tscn" id="10_j8ldu"]
+[ext_resource type="PackedScene" uid="uid://csg51uem27wc2" path="res://Assets/Placeholder/Scene_Buildings/Building_08_8x8_L_02.tscn" id="11_h1uls"]
+[ext_resource type="PackedScene" uid="uid://fdwj1jfffy6m" path="res://Assets/Placeholder/Scene_Buildings/Building_08_8x8_L_03.tscn" id="12_ryfsh"]
+[ext_resource type="PackedScene" uid="uid://hc4xn3vgbcy4" path="res://Assets/Placeholder/Scene_Buildings/Building_08_8x8_L_04.tscn" id="13_7rv4o"]
+[ext_resource type="PackedScene" uid="uid://cxqhatbs8xmal" path="res://Assets/Placeholder/Scene_Buildings/Building_09_16x8_L_01.tscn" id="14_6wajk"]
+[ext_resource type="PackedScene" uid="uid://b7a3dl23gkjto" path="res://Assets/Placeholder/Scene_Buildings/Building_09_16x8_L_02.tscn" id="15_jbx0b"]
+[ext_resource type="PackedScene" uid="uid://bshxgbc15xkeh" path="res://Assets/Placeholder/Scene_Buildings/Building_09_16x8_L_03.tscn" id="16_kfed1"]
+[ext_resource type="PackedScene" uid="uid://c0dv4rpxw51x8" path="res://Assets/Placeholder/Scene_Buildings/Building_09_16x8_L_04.tscn" id="17_2e63u"]
+[ext_resource type="PackedScene" uid="uid://0lsvxo1fkhk" path="res://Assets/Placeholder/Scene_Buildings/Building_07_16x16_02.tscn" id="18_jacsl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nbx2p"]
 atlas = ExtResource("2_fhu5q")
@@ -35,106 +26,68 @@ region = Rect2(111, 0, 16, 32)
 [node name="BuildingsLineup" type="Node2D" unique_id=337266634]
 
 [node name="Character" type="Sprite2D" parent="." unique_id=4913370]
-position = Vector2(-24, 80)
-texture = SubResource("AtlasTexture_nbx2p")
-
-[node name="Character2" type="Sprite2D" parent="." unique_id=993529463]
 position = Vector2(-24, 48)
 texture = SubResource("AtlasTexture_nbx2p")
 
+[node name="Character2" type="Sprite2D" parent="." unique_id=993529463]
+position = Vector2(-24, 16)
+texture = SubResource("AtlasTexture_nbx2p")
+
 [node name="Character3" type="Sprite2D" parent="." unique_id=48257991]
-position = Vector2(-24, 432)
-texture = SubResource("AtlasTexture_nbx2p")
-
-[node name="Character6" type="Sprite2D" parent="." unique_id=1432897180]
-position = Vector2(-24, 400)
-texture = SubResource("AtlasTexture_nbx2p")
-
-[node name="Character7" type="Sprite2D" parent="." unique_id=1399824831]
-position = Vector2(-24, 368)
+position = Vector2(-24, 208)
 texture = SubResource("AtlasTexture_nbx2p")
 
 [node name="Character4" type="Sprite2D" parent="." unique_id=253418098]
 position = Vector2(-24, 240)
 texture = SubResource("AtlasTexture_nbx2p")
 
-[node name="Character5" type="Sprite2D" parent="." unique_id=28743499]
-position = Vector2(-24, 208)
-texture = SubResource("AtlasTexture_nbx2p")
+[node name="Building_01_4x4_01" parent="." unique_id=876175604 instance=ExtResource("2_huyt8")]
+position = Vector2(0, -32)
 
-[node name="Building01_4x4" parent="." unique_id=876175604 instance=ExtResource("1_gfrx7")]
+[node name="Building_01_4x4_02" parent="." unique_id=1886591272 instance=ExtResource("3_j8ldu")]
+position = Vector2(128, -32)
 
-[node name="Building02_4x4" parent="." unique_id=13079589 instance=ExtResource("3_nbx2p")]
-position = Vector2(-128, 0)
+[node name="Building_02_4x8_01" parent="." unique_id=1624677356 instance=ExtResource("4_h1uls")]
+position = Vector2(256, -32)
 
-[node name="Building03_4x5" parent="." unique_id=365543280 instance=ExtResource("4_xplhh")]
-position = Vector2(96, 0)
+[node name="Building_03_8x4_01" parent="." unique_id=1936962175 instance=ExtResource("5_ryfsh")]
+position = Vector2(0, 96)
 
-[node name="Building04_4x6" parent="." unique_id=847175329 instance=ExtResource("5_xplhh")]
-position = Vector2(192, 0)
+[node name="Building_04_8x8_01" parent="." unique_id=2074693004 instance=ExtResource("6_7rv4o")]
+position = Vector2(128, 96)
 
-[node name="Building05_4x7" parent="." unique_id=1078968291 instance=ExtResource("6_3dwbx")]
-position = Vector2(320, 0)
+[node name="Building_05_8x16_01" parent="." unique_id=1321249231 instance=ExtResource("7_6wajk")]
+position = Vector2(320, 96)
 
-[node name="Building06_4x8" parent="." unique_id=153881343 instance=ExtResource("7_wlcjd")]
-position = Vector2(448, 0)
+[node name="Building_06_16x8_01" parent="." unique_id=155215536 instance=ExtResource("8_jbx0b")]
+position = Vector2(0, 288)
 
-[node name="Building07_5x4" parent="." unique_id=343872880 instance=ExtResource("8_jogb5")]
-position = Vector2(0, 144)
+[node name="Building_08_8x8_L_01" parent="." unique_id=633425226 instance=ExtResource("10_j8ldu")]
+position = Vector2(640, 96)
 
-[node name="Building08_5x5" parent="." unique_id=514624581 instance=ExtResource("9_huyt8")]
-position = Vector2(96, 144)
+[node name="Building_08_8x8_L_02" parent="." unique_id=494380869 instance=ExtResource("11_h1uls")]
+position = Vector2(832, 96)
 
-[node name="Building09_5x6" parent="." unique_id=1884552861 instance=ExtResource("10_h1uls")]
-position = Vector2(192, 144)
+[node name="Building_08_8x8_L_03" parent="." unique_id=1268836507 instance=ExtResource("12_ryfsh")]
+position = Vector2(1024, 96)
 
-[node name="Building10_5x7" parent="." unique_id=1036579805 instance=ExtResource("11_ryfsh")]
-position = Vector2(320, 144)
+[node name="Building_08_8x8_L_04" parent="." unique_id=1563551400 instance=ExtResource("13_7rv4o")]
+position = Vector2(1216, 96)
 
-[node name="Building11_5x8" parent="." unique_id=902386520 instance=ExtResource("12_ryfsh")]
-position = Vector2(448, 144)
+[node name="Building_09_16x8_L_01" parent="." unique_id=914543123 instance=ExtResource("14_6wajk")]
+position = Vector2(192, 288)
 
-[node name="Building12_6x4" parent="." unique_id=1930798735 instance=ExtResource("13_7rv4o")]
-position = Vector2(0, 320)
+[node name="Building_09_16x8_L_02" parent="." unique_id=66837635 instance=ExtResource("15_jbx0b")]
+position = Vector2(512, 288)
 
-[node name="Building13_6x5" parent="." unique_id=169161969 instance=ExtResource("14_6wajk")]
-position = Vector2(96, 320)
+[node name="Building_09_16x8_L_03" parent="." unique_id=1233379921 instance=ExtResource("16_kfed1")]
+position = Vector2(832, 288)
 
-[node name="Building14_6x6" parent="." unique_id=764041219 instance=ExtResource("15_jbx0b")]
-position = Vector2(192, 320)
+[node name="Building_09_16x8_L_04" parent="." unique_id=1606121563 instance=ExtResource("17_2e63u")]
+position = Vector2(1152, 288)
 
-[node name="Building15_6x7" parent="." unique_id=1624792224 instance=ExtResource("16_2e63u")]
-position = Vector2(320, 320)
+[node name="Building_07_16x16_01" parent="." unique_id=1032572541 instance=ExtResource("9_kfed1")]
+position = Vector2(0, 608)
 
-[node name="Building16_6x8" parent="." unique_id=525651303 instance=ExtResource("17_jacsl")]
-position = Vector2(448, 320)
-
-[node name="Building17_7x4" parent="." unique_id=1014657833 instance=ExtResource("18_jacsl")]
-position = Vector2(0, 496)
-
-[node name="Building18_7x5" parent="." unique_id=485157342 instance=ExtResource("19_4ljsg")]
-position = Vector2(96, 496)
-
-[node name="Building19_7x6" parent="." unique_id=471654866 instance=ExtResource("20_sfu7w")]
-position = Vector2(192, 496)
-
-[node name="Building20_7x7" parent="." unique_id=366436146 instance=ExtResource("21_0e1dn")]
-position = Vector2(320, 496)
-
-[node name="Building21_7x8" parent="." unique_id=175617782 instance=ExtResource("22_jofo3")]
-position = Vector2(448, 496)
-
-[node name="Building22_8x4" parent="." unique_id=1863994224 instance=ExtResource("23_y63k5")]
-position = Vector2(0, 672)
-
-[node name="Building23_8x5" parent="." unique_id=185368174 instance=ExtResource("24_m4fex")]
-position = Vector2(96, 672)
-
-[node name="Building24_8x6" parent="." unique_id=1209849952 instance=ExtResource("25_pnjja")]
-position = Vector2(192, 672)
-
-[node name="Building25_8x7" parent="." unique_id=1685298309 instance=ExtResource("26_lpxnh")]
-position = Vector2(320, 672)
-
-[node name="Building26_8x8" parent="." unique_id=1850263762 instance=ExtResource("27_gqpjw")]
-position = Vector2(448, 672)
+[node name="Building_07_16x16_02" parent="." unique_id=1212021041 instance=ExtResource("18_jacsl")]
+position = Vector2(320, 608)

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bsgcolbvamoct"]
+
+[ext_resource type="Script" uid="uid://8kjnyvfqasii" path="res://Scenes/building.gd" id="1_uj2qm"]
+[ext_resource type="Texture2D" uid="uid://yhpw7badl1yp" path="res://Assets/Placeholder/Environment/House_Free_TexturePack.png" id="2_amr18"]
+[ext_resource type="PackedScene" uid="uid://beapo2vboq3tr" path="res://Scenes/interactable.tscn" id="3_amr18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3v36"]
+size = Vector2(57, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj2qm"]
+size = Vector2(1, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amr18"]
+size = Vector2(1, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2wr7"]
+size = Vector2(18, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4bpb"]
+size = Vector2(18.25, 1.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxhs"]
+size = Vector2(58, 1)
+
+[node name="Building" type="StaticBody2D" unique_id=95963998]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_uj2qm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=195288491]
+position = Vector2(0, -1.5)
+texture = ExtResource("2_amr18")
+offset = Vector2(0, -40)
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 95)
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=632393335]
+position = Vector2(0, -42.5)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" unique_id=1309249152]
+position = Vector2(-0.5, 26)
+shape = SubResource("RectangleShape2D_k3v36")
+debug_color = Color(0.78576493, 0.40921003, 0.38810116, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594581603]
+position = Vector2(-29.5, -16.5)
+shape = SubResource("RectangleShape2D_uj2qm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=573751500]
+position = Vector2(28, -16.5)
+shape = SubResource("RectangleShape2D_amr18")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." unique_id=261266123]
+position = Vector2(-21, -1)
+shape = SubResource("RectangleShape2D_b2wr7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="." unique_id=1226243131]
+position = Vector2(19.125, -0.75)
+shape = SubResource("RectangleShape2D_n4bpb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." unique_id=1802535541]
+position = Vector2(-1, -32)
+shape = SubResource("RectangleShape2D_jdxhs")
+
+[node name="Interactable" parent="." unique_id=1062114288 instance=ExtResource("3_amr18")]
+show_behind_parent = true
+position = Vector2(0, -16)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

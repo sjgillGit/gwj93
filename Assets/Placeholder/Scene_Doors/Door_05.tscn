@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cuhq13nx1xxas"]
+
+[ext_resource type="Texture2D" uid="uid://csqn14bh6jqw" path="res://Assets/Placeholder/Environment/Building_Tile_wip_01.png" id="1_fdv3e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0adf"]
+atlas = ExtResource("1_fdv3e")
+region = Rect2(64, 352, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n17o4"]
+atlas = ExtResource("1_fdv3e")
+region = Rect2(64, 320, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gr5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0adf")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n17o4")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Door05" type="AnimatedSprite2D" unique_id=62102613]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_4gr5n")
+animation = &"close"
+autoplay = "close"
+offset = Vector2(0, -16)

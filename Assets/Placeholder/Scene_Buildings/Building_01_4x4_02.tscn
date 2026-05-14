@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://dft6l1vfkreox"]
+
+[ext_resource type="TileSet" uid="uid://c2keyeft1w1rg" path="res://Assets/Placeholder/Resource/buildings_tile_set.tres" id="1_t41ks"]
+[ext_resource type="PackedScene" uid="uid://dw284yk723sji" path="res://Assets/Placeholder/Scene_Doors/Door_02.tscn" id="2_84mrn"]
+
+[node name="Building_01_4x4_02" type="Node2D" unique_id=876175604]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1869326267]
+visibility_layer = 16
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAIAAAAJABoAAAABAAIAAAAKABoAAAACAAIAAAAKABoAAAADAAIAAAALABoAAAAAAAUAAAAJABsAAAABAAUAAAAKABsAAAACAAUAAAAKABsAAAADAAUAAAALABsAAAAAAAMAAAAJABoAAAABAAMAAAAKABoAAAACAAMAAAAKABoAAAADAAMAAAALABoAAAAAAAQAAAAJABoAAAABAAQAAAAKABoAAAACAAQAAAAKABoAAAADAAQAAAALABoAAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Backwall" type="TileMapLayer" parent="." unique_id=786619682]
+visibility_layer = 32
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAAUAAAAAAAAAAEAAAAUAAEAAAACAAAAAAAWAAAAAAACAAEAAAAWAAEAAAADAAAAAAAXAAAAAAADAAEAAAAXAAEAAAABAAAAAAAVAAAAAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Door02_Back" parent="." unique_id=62102613 instance=ExtResource("2_84mrn")]
+position = Vector2(24, 32)
+
+[node name="BackWindow" type="TileMapLayer" parent="." unique_id=375284853]
+visibility_layer = 32
+texture_filter = 1
+tile_set = ExtResource("1_t41ks")
+
+[node name="FrontWall" type="TileMapLayer" parent="." unique_id=1807533291]
+visibility_layer = 64
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAQAAAAUAAQAAAAAAAUAAAAUAAQAAAABAAQAAAAVAAEAAAACAAQAAAAVAAQAAAACAAUAAAAWAAQAAAADAAQAAAAXAAQAAAADAAUAAAAXAAQAAAAAAAMAAAAUAAUAAAABAAMAAAAVAAUAAAACAAMAAAAWAAUAAAADAAMAAAAXAAUAAAAAAAIAAAAUAAIAAAADAAIAAAAXAAIAAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Door02_Front" parent="." unique_id=550037051 instance=ExtResource("2_84mrn")]
+position = Vector2(24, 96)
+
+[node name="FrontWindow" type="TileMapLayer" parent="." unique_id=1574129833]
+visibility_layer = 64
+texture_filter = 1
+tile_map_data = PackedByteArray("AAACAAQAAAADAB4AAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Roof" type="TileMapLayer" parent="." unique_id=2006618110]
+visibility_layer = 128
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD/////AAAGAA8AAAD//wAAAAAGABAAAAD//wEAAAAGABAAAAAAAP//AAAHAA8AAAAAAAAAAAAHABAAAAAAAAEAAAAHABAAAAABAP//AAAIAA8AAAABAAAAAAAIABAAAAABAAEAAAAIABAAAAACAP//AAAJAA8AAAACAAAAAAAJABAAAAACAAEAAAAJABAAAAADAP//AAAKAA8AAAADAAAAAAAKABAAAAADAAEAAAAKABAAAAAEAP//AAALAA8AAAAEAAAAAAALABAAAAAEAAEAAAALABAAAAD//wMAAAAGABEAAAAAAAMAAAAHABEAAAABAAMAAAAIABEAAAACAAMAAAAJABEAAAADAAMAAAAKABEAAAAEAAMAAAALABEAAAD//wIAAAAGABAAAAAAAAIAAAAHABAAAAABAAIAAAAIABAAAAACAAIAAAAJABAAAAADAAIAAAAKABAAAAAEAAIAAAALABAAAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Chimney" type="TileMapLayer" parent="." unique_id=1922683682]
+visibility_layer = 128
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAP//AAABABIAAAABAAAAAAABABMAAAA=")
+tile_set = ExtResource("1_t41ks")
+
+[node name="Label" type="Label" parent="." unique_id=808748599]
+offset_top = 32.0
+offset_right = 68.0
+offset_bottom = 55.0
+text = "floor 4x4"

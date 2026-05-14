@@ -1,13 +1,19 @@
-[gd_scene format=3 uid="uid://cjpadiddp1g0h"]
+[gd_scene format=3 uid="uid://dbr3rnh3uurh3"]
 
-[ext_resource type="Script" uid="uid://cif6ha7e60t7m" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://daixvnq5567sb" path="res://Assets/Placeholder/Character/16x32 Walk Cycle-Sheet_ClothingTest.png" id="2_cvnsp"]
+[ext_resource type="Script" uid="uid://cr5q6pe8tqyfy" path="res://Scenes/citizen.gd" id="1_wxrsi"]
+[ext_resource type="Texture2D" uid="uid://dtp4rc7ha7l87" path="res://Assets/Placeholder/Character/ref_examples/character_examples_16x32.png" id="2_2cv82"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(7, 7.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6fdm"]
+size = Vector2(8, 6)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
-radius = 18.027756
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cv82"]
+radius = 55.081757
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rj11h"]
+radius = 81.09871
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxrsi"]
+radius = 124.78782
 
 [sub_resource type="Animation" id="Animation_wxrsi"]
 length = 0.001
@@ -92,7 +98,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_0wujq"]
 resource_name = "walk"
-length = 0.3
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -113,55 +119,74 @@ tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225),
+"times": PackedFloat32Array(0, 0.13757317, 0.28185722, 0.4110418),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.17846246, 0.0, 0.17453292519943295]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvnsp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rdgp7"]
 _data = {
 &"RESET": SubResource("Animation_wxrsi"),
 &"idle": SubResource("Animation_2cv82"),
 &"walk": SubResource("Animation_0wujq")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=1825991017]
+[sub_resource type="LabelSettings" id="LabelSettings_wxrsi"]
+font_size = 12
+
+[node name="Citizen" type="CharacterBody2D" unique_id=2071423212]
+collision_layer = 8
 collision_mask = 4
 motion_mode = 1
-script = ExtResource("1_cvnsp")
+script = ExtResource("1_wxrsi")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=1544013206]
-position = Vector2(0.5, -0.75)
-shape = SubResource("RectangleShape2D_cvnsp")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=751425990]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1676226531]
 position = Vector2(0, -15)
-texture = ExtResource("2_cvnsp")
+texture = ExtResource("2_2cv82")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 32)
+region_rect = Rect2(0, 64, 16, 32)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=785082911]
-zoom = Vector2(1.5, 1.5)
-process_callback = 0
-limit_left = 0
-limit_top = 0
-limit_right = 2560
-limit_bottom = 1920
-position_smoothing_enabled = true
-position_smoothing_speed = 6.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=860627397]
+shape = SubResource("RectangleShape2D_f6fdm")
 
-[node name="InteractionDetector" type="Area2D" parent="." unique_id=1588281262]
-position = Vector2(0, -12)
+[node name="CloseVisionDetector" type="Area2D" parent="." unique_id=1772761351]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 9
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector" unique_id=190712221]
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_cvnsp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CloseVisionDetector" unique_id=798222462]
+shape = SubResource("CircleShape2D_2cv82")
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1865426368]
-radius = 10.78
+[node name="VisionDetector" type="Area2D" parent="." unique_id=395274643]
+collision_layer = 0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=120685901]
-libraries/ = SubResource("AnimationLibrary_cvnsp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionDetector" unique_id=321840034]
+shape = SubResource("CircleShape2D_rj11h")
+
+[node name="FarVisionDetector" type="Area2D" parent="." unique_id=31294019]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FarVisionDetector" unique_id=837106138]
+shape = SubResource("CircleShape2D_wxrsi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=821831807]
+path_desired_distance = 2.0
+target_desired_distance = 5.0
+avoidance_enabled = true
+radius = 5.0
+neighbor_distance = 100.0
+max_speed = 200.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1546826307]
+libraries/ = SubResource("AnimationLibrary_rdgp7")
+
+[node name="Label" type="Label" parent="." unique_id=719570659]
+visible = false
+offset_left = -19.0
+offset_top = -41.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "sd"
+label_settings = SubResource("LabelSettings_wxrsi")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
