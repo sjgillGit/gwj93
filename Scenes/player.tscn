@@ -142,7 +142,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=785082911]
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 limit_left = 0
 limit_top = 0
