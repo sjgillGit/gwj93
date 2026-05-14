@@ -1,0 +1,17 @@
+[gd_scene format=4 uid="uid://bofptibaeymbi"]
+
+[ext_resource type="TileSet" uid="uid://b1vgdw0essfir" path="res://Scenes/LevelGeneration/tile_set.tres" id="1_fr2wx"]
+
+[node name="Park_01_4x4_01" type="Node2D" unique_id=876175604]
+
+[node name="Land" type="TileMapLayer" parent="." unique_id=1869326267]
+visibility_layer = 16
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAAAAAAMAAIAAAAAAAEAAAAMAAIAAAABAAEAAAAMAAMAAAACAAAAAAAMAAIAAAADAAAAAAAMAAIAAAADAAEAAAAMAAIAAAACAAEAAAAMAAIAAAAAAAIAAAAMAAQAAAABAAIAAAAMAAIAAAACAAIAAAAMAAIAAAADAAIAAAAMAAIAAAAAAAMAAAAMAAIAAAABAAMAAAAMAAIAAAACAAMAAAAMAAMAAAADAAMAAAAMAAMAAAAAAAAAAAAMAAMAAAA=")
+tile_set = ExtResource("1_fr2wx")
+
+[node name="Decal" type="TileMapLayer" parent="." unique_id=1526505499]
+visibility_layer = 16
+texture_filter = 1
+tile_map_data = PackedByteArray("AAABAAIAAAALAAkAAAADAAAAAAAKAAkAAAAAAAMAAAAKAAkAAAAAAAAAAAAMAAkAAAACAAAAAAALAAkAABA=")
+tile_set = ExtResource("1_fr2wx")

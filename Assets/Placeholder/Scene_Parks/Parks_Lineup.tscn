@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bag1m075a3o0n"]
+
+[ext_resource type="Texture2D" uid="uid://cv8qd5anvehev" path="res://Assets/Placeholder/Character/body_16x32.png" id="1_mea5r"]
+[ext_resource type="PackedScene" uid="uid://d3ep2biq483cs" path="res://Assets/Placeholder/Scene_Parks/Park_01_4x4_01.tscn" id="19_y88dx"]
+[ext_resource type="PackedScene" uid="uid://bofptibaeymbi" path="res://Assets/Placeholder/Scene_Parks/Park_01_4x4_02.tscn" id="20_sutbi"]
+[ext_resource type="PackedScene" uid="uid://vp2isd4r4g43" path="res://Assets/Placeholder/Scene_Parks/Park_02_4x8_01.tscn" id="21_sutbi"]
+[ext_resource type="PackedScene" uid="uid://fos1sue5xee8" path="res://Assets/Placeholder/Scene_Parks/Park_03_8x4_01.tscn" id="22_71cr1"]
+[ext_resource type="PackedScene" uid="uid://cwnmt3gl4uoci" path="res://Assets/Placeholder/Scene_Parks/Park_04_8x8_01.tscn" id="23_8u8f3"]
+[ext_resource type="PackedScene" uid="uid://bx8knfxv8hy88" path="res://Assets/Placeholder/Scene_Parks/Park_05_8x16_01.tscn" id="24_q8wex"]
+[ext_resource type="PackedScene" uid="uid://83h6vekntfrp" path="res://Assets/Placeholder/Scene_Parks/Park_06_16x8_01.tscn" id="25_yi8in"]
+[ext_resource type="PackedScene" uid="uid://beli44y60xtw0" path="res://Assets/Placeholder/Scene_Parks/Park_07_16x16_01.tscn" id="26_3vi2y"]
+[ext_resource type="PackedScene" uid="uid://g85wwcaexmq6" path="res://Assets/Placeholder/Scene_Parks/Park_07_16x16_02.tscn" id="27_kyowa"]
+[ext_resource type="PackedScene" uid="uid://vyvbot8tajfs" path="res://Assets/Placeholder/Scene_Parks/Park_08_8x8_L_01.tscn" id="28_1m3at"]
+[ext_resource type="PackedScene" uid="uid://cexf4eg8xu6xy" path="res://Assets/Placeholder/Scene_Parks/Park_08_8x8_L_02.tscn" id="29_tnha8"]
+[ext_resource type="PackedScene" uid="uid://8upr0sn8s5k" path="res://Assets/Placeholder/Scene_Parks/Park_08_8x8_L_03.tscn" id="30_qd11c"]
+[ext_resource type="PackedScene" uid="uid://ce0trmqjaxwus" path="res://Assets/Placeholder/Scene_Parks/Park_08_8x8_L_04.tscn" id="31_fr344"]
+[ext_resource type="PackedScene" uid="uid://ieg6mdp0rh1t" path="res://Assets/Placeholder/Scene_Parks/Park_09_16x8_L_01.tscn" id="32_tnha8"]
+[ext_resource type="PackedScene" uid="uid://cdut1y4jym2n7" path="res://Assets/Placeholder/Scene_Parks/Park_09_16x8_L_02.tscn" id="33_qd11c"]
+[ext_resource type="PackedScene" uid="uid://c8hpod5m1ejfc" path="res://Assets/Placeholder/Scene_Parks/Park_09_16x8_L_03.tscn" id="34_fr344"]
+[ext_resource type="PackedScene" uid="uid://o42ajqpc5jg8" path="res://Assets/Placeholder/Scene_Parks/Park_09_16x8_L_04.tscn" id="35_etndl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbx2p"]
+atlas = ExtResource("1_mea5r")
+region = Rect2(111, 0, 16, 32)
+
+[node name="ParksLineup" type="Node2D" unique_id=337266634]
+
+[node name="Character" type="Sprite2D" parent="." unique_id=4913370]
+position = Vector2(-24, 48)
+texture = SubResource("AtlasTexture_nbx2p")
+
+[node name="Character2" type="Sprite2D" parent="." unique_id=993529463]
+position = Vector2(-24, 16)
+texture = SubResource("AtlasTexture_nbx2p")
+
+[node name="Character3" type="Sprite2D" parent="." unique_id=48257991]
+position = Vector2(-24, 208)
+texture = SubResource("AtlasTexture_nbx2p")
+
+[node name="Character4" type="Sprite2D" parent="." unique_id=253418098]
+position = Vector2(-24, 240)
+texture = SubResource("AtlasTexture_nbx2p")
+
+[node name="Park_01_4x4_01" parent="." unique_id=1087594926 instance=ExtResource("19_y88dx")]
+
+[node name="Park_01_4x4_02" parent="." unique_id=968307982 instance=ExtResource("20_sutbi")]
+position = Vector2(128, 0)
+
+[node name="Park_02_4x8_01" parent="." unique_id=1226147916 instance=ExtResource("21_sutbi")]
+position = Vector2(256, 0)
+
+[node name="Park_03_8x4_01" parent="." unique_id=838636769 instance=ExtResource("22_71cr1")]
+position = Vector2(0, 128)
+
+[node name="Park_04_8x8_01" parent="." unique_id=1565978126 instance=ExtResource("23_8u8f3")]
+position = Vector2(128, 128)
+
+[node name="Park_05_8x16_01" parent="." unique_id=700509981 instance=ExtResource("24_q8wex")]
+position = Vector2(320, 128)
+
+[node name="Park_06_16x8_01" parent="." unique_id=412026246 instance=ExtResource("25_yi8in")]
+position = Vector2(0, 320)
+
+[node name="Park_07_16x16_01" parent="." unique_id=1547462585 instance=ExtResource("26_3vi2y")]
+position = Vector2(0, 640)
+
+[node name="Park_07_16x16_02" parent="." unique_id=1749211362 instance=ExtResource("27_kyowa")]
+position = Vector2(320, 640)
+
+[node name="Park_08_8x8_L_01" parent="." unique_id=505529974 instance=ExtResource("28_1m3at")]
+position = Vector2(640, 128)
+
+[node name="Park_08_8x8_L_02" parent="." unique_id=1104225691 instance=ExtResource("29_tnha8")]
+position = Vector2(832, 128)
+
+[node name="Park_08_8x8_L_03" parent="." unique_id=1918409636 instance=ExtResource("30_qd11c")]
+position = Vector2(1024, 128)
+
+[node name="Park_08_8x8_L_04" parent="." unique_id=5577379 instance=ExtResource("31_fr344")]
+position = Vector2(1216, 128)
+
+[node name="Park_09_16x8_L_01" parent="." unique_id=2036631675 instance=ExtResource("32_tnha8")]
+position = Vector2(192, 320)
+
+[node name="Park_09_16x8_L_02" parent="." unique_id=1011614642 instance=ExtResource("33_qd11c")]
+position = Vector2(512, 320)
+
+[node name="Park_09_16x8_L_03" parent="." unique_id=1870447664 instance=ExtResource("34_fr344")]
+position = Vector2(832, 320)
+
+[node name="Park_09_16x8_L_04" parent="." unique_id=417865964 instance=ExtResource("35_etndl")]
+position = Vector2(1152, 320)
