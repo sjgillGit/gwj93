@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8kjnyvfqasii" path="res://Scenes/building.gd" id="1_l48rw"]
 [ext_resource type="TileSet" uid="uid://c2keyeft1w1rg" path="res://Assets/Placeholder/Resource/buildings_tile_set.tres" id="2_l48rw"]
+[ext_resource type="PackedScene" uid="uid://b1pdl0y3i6j5u" path="res://Assets/Placeholder/Scene_Doors/Door_04.tscn" id="3_445q5"]
 [ext_resource type="PackedScene" uid="uid://beapo2vboq3tr" path="res://Scenes/interactable.tscn" id="3_enx78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5a4m"]
@@ -26,12 +27,15 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAIAAAAAAAAAAEAAAAIAAEAAAACAAAAAAAKAAAAAAACAAEAAAAKAAEAAAABAAAAAAAJAAAAAAADAAAAAAAKAAAAAAADAAEAAAAKAAEAAAAEAAAAAAAKAAAAAAAEAAEAAAAKAAEAAAAFAAAAAAAKAAAAAAAFAAEAAAAKAAEAAAAHAAAAAAALAAAAAAAHAAEAAAALAAEAAAAGAAAAAAAKAAAAAAAGAAEAAAAKAAEAAAA=")
 tile_set = ExtResource("2_l48rw")
 
-[node name="BackDoor" type="TileMapLayer" parent="." unique_id=375284853]
+[node name="BackWindow" type="TileMapLayer" parent="." unique_id=375284853]
 visibility_layer = 32
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAAAAAAEABYAAAABAAEAAAAEABcAAAA=")
+tile_map_data = PackedByteArray("AAACAAEAAAAEAB8AAAADAAEAAAAFAB8AAAAIAAAAAAAEAB4AAAAIAAEAAAAEAB8AAAAJAAAAAAAFAB4AAAAJAAEAAAAFAB8AAAADAAAAAAAFAB4AAAACAAAAAAAEAB4AAAALAAAAAAAEAB4AAAALAAEAAAAEAB8AAAAMAAAAAAAFAB4AAAAMAAEAAAAFAB8AAAA=")
 tile_set = ExtResource("2_l48rw")
+
+[node name="Door04_Back" parent="." unique_id=62102613 instance=ExtResource("3_445q5")]
+position = Vector2(24, 32)
 
 [node name="TopFrontWall" type="TileMapLayer" parent="." unique_id=828890525]
 visibility_layer = 64
@@ -56,12 +60,15 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAkAAAAIAAQAAAACAAkAAAAKAAQAAAADAAkAAAAKAAQAAAAEAAkAAAAKAAQAAAAFAAkAAAAKAAQAAAAHAAkAAAALAAQAAAAGAAkAAAAKAAQAAAA=")
 tile_set = ExtResource("2_l48rw")
 
-[node name="FrontDoor" type="TileMapLayer" parent="." unique_id=1574129833]
+[node name="FrontWindow" type="TileMapLayer" parent="." unique_id=1574129833]
 visibility_layer = 64
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAgAAAAEABYAAAABAAkAAAAEABcAAAA=")
+tile_map_data = PackedByteArray("AAAIAAgAAAAEAB4AAAAIAAkAAAAEAB8AAAAJAAgAAAAFAB4AAAAJAAkAAAAFAB8AAAALAAgAAAAEAB4AAAALAAkAAAAEAB8AAAAMAAgAAAAFAB4AAAAMAAkAAAAFAB8AAAA=")
 tile_set = ExtResource("2_l48rw")
+
+[node name="Door04_Front" parent="." unique_id=1492611491 instance=ExtResource("3_445q5")]
+position = Vector2(24, 160)
 
 [node name="Roof" type="TileMapLayer" parent="." unique_id=2006618110]
 visibility_layer = 128
@@ -74,7 +81,7 @@ tile_set = ExtResource("2_l48rw")
 visibility_layer = 128
 z_index = 2
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAGAAIAAAAAABIAAAAGAAEAAAAAABQAAAAEAAEAAAAAABQAAAAEAAIAAAAAABIAAAADAAEAAAABABMAAAADAAIAAAABABQAAAAFAAEAAAABABMAAAAFAAIAAAABABQAAAAHAAYAAAABABUAAAAGAAYAAAABABUAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AAABABIAAAAAAAAAAAABABMAAAABAAAAAAAAABIAAAAFAAEAAAADABIAAAAFAAIAAAADABMAAAAHAAEAAAADABIAAAAHAAIAAAADABMAAAAAAAUAAAAMABgAAAAAAAYAAAAMABkAAAABAAUAAAANABgAAAABAAYAAAANABkAAAACAAUAAAAOABgAAAACAAYAAAAOABkAAAADAAUAAAAPABgAAAADAAYAAAAPABkAAAA=")
 tile_set = ExtResource("2_l48rw")
 
 [node name="Label" type="Label" parent="." unique_id=1878431510]

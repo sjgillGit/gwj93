@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bu5pp21xcrse1"]
 
+[ext_resource type="PackedScene" uid="uid://gajhb1blq0rp" path="res://Assets/Placeholder/Scene_Doors/Door_03.tscn" id="2_qgsyq"]
 [ext_resource type="TileSet" uid="uid://c2keyeft1w1rg" path="res://Assets/Placeholder/Resource/buildings_tile_set.tres" id="2_wdf4c"]
 
 [node name="Building_03_8x4_01" type="Node2D" unique_id=876175604]
@@ -16,22 +17,28 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAAAAAAQAAAAAAAAAAEAAAAQAAEAAAACAAAAAAASAAAAAAACAAEAAAASAAEAAAABAAAAAAARAAAAAAADAAAAAAATAAAAAAADAAEAAAATAAEAAAA=")
 tile_set = ExtResource("2_wdf4c")
 
-[node name="BackDoor" type="TileMapLayer" parent="." unique_id=375284853]
+[node name="Door03_Back" parent="." unique_id=62102613 instance=ExtResource("2_qgsyq")]
+position = Vector2(24, 32)
+
+[node name="BackWindow" type="TileMapLayer" parent="." unique_id=375284853]
 visibility_layer = 32
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAAAAAACABYAAAABAAEAAAACABcAAAA=")
+tile_map_data = PackedByteArray("AAACAAAAAAADABgAAAACAAEAAAADABkAAAA=")
 tile_set = ExtResource("2_wdf4c")
 
 [node name="FrontWall" type="TileMapLayer" parent="." unique_id=1807533291]
 visibility_layer = 64
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAcAAAAQAAYAAAAAAAgAAAAQAAQAAAABAAcAAAARAAYAAAACAAcAAAASAAYAAAACAAgAAAARAAQAAAADAAcAAAATAAYAAAADAAgAAAATAAQAAAAAAAkAAAAQAAQAAAABAAgAAAARAAEAAAACAAkAAAASAAQAAAADAAkAAAATAAQAAAAAAAYAAAAQAAIAAAAAAAUAAAAQAAIAAAAAAAQAAAAQAAIAAAAAAAMAAAAQAAIAAAAAAAIAAAAQAAIAAAADAAIAAAATAAIAAAADAAMAAAATAAIAAAADAAQAAAATAAIAAAADAAUAAAATAAIAAAADAAYAAAATAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAcAAAAQAAYAAAAAAAgAAAAQAAQAAAACAAcAAAASAAYAAAADAAcAAAATAAYAAAADAAgAAAATAAQAAAAAAAkAAAAQAAQAAAADAAkAAAATAAQAAAAAAAYAAAAQAAIAAAAAAAUAAAAQAAIAAAAAAAQAAAAQAAIAAAAAAAMAAAAQAAIAAAAAAAIAAAAQAAIAAAADAAIAAAATAAIAAAADAAMAAAATAAIAAAADAAQAAAATAAIAAAADAAUAAAATAAIAAAADAAYAAAATAAIAAAABAAcAAAARAAYAAAABAAgAAAARAAQAAAABAAkAAAASAAQAAAACAAgAAAARAAEAAAA=")
 tile_set = ExtResource("2_wdf4c")
 
-[node name="FrontDoor" type="TileMapLayer" parent="." unique_id=1574129833]
+[node name="Door03_Front" parent="." unique_id=1521197740 instance=ExtResource("2_qgsyq")]
+position = Vector2(40, 160)
+
+[node name="FrontWindow" type="TileMapLayer" parent="." unique_id=1574129833]
 visibility_layer = 64
 texture_filter = 1
-tile_map_data = PackedByteArray("AAABAAgAAAACABYAAAABAAkAAAACABcAAAA=")
+tile_map_data = PackedByteArray("AAABAAgAAAADABgAAAABAAkAAAADABkAAAA=")
 tile_set = ExtResource("2_wdf4c")
 
 [node name="Roof" type="TileMapLayer" parent="." unique_id=2006618110]
@@ -43,7 +50,7 @@ tile_set = ExtResource("2_wdf4c")
 [node name="Chimney" type="TileMapLayer" parent="." unique_id=1922683682]
 visibility_layer = 128
 texture_filter = 1
-tile_map_data = PackedByteArray("AAACAAEAAAAAABIAAAADAAAAAAABABMAAAADAAEAAAABABQAAAAAAAUAAAAAABUAAAADAAIAAAAAABQAAAA=")
+tile_map_data = PackedByteArray("AAACAAEAAAAAABIAAAACAAQAAAAAABIAAAA=")
 tile_set = ExtResource("2_wdf4c")
 
 [node name="Label" type="Label" parent="." unique_id=1878431510]
